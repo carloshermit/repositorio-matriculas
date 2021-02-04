@@ -48,8 +48,12 @@
       </div>
     </form>
     <!--Prueba-->
+<<<<<<< HEAD
     <!--Prueba 2-->
     <!--Prueba 3-->
+=======
+    
+>>>>>>> fd1dc67de47e06c5765674ce8eac6e6a43718b8b
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
@@ -145,7 +149,8 @@
     </ul>
   </nav>
   <!-- /.navbar -->
-
+<!--Cambio Luis-->
+<!--Cambio Luis2-->
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
