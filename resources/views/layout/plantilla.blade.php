@@ -48,12 +48,8 @@
       </div>
     </form>
     <!--Prueba-->
-<<<<<<< HEAD
     <!--Prueba 2-->
     <!--Prueba 3-->
-=======
-    
->>>>>>> fd1dc67de47e06c5765674ce8eac6e6a43718b8b
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
@@ -210,7 +206,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{route('profesor.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Personal</p>
                 </a>

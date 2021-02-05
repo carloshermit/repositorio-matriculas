@@ -20,3 +20,4 @@ Route::get('/bienvenido', function () {
     return view('bienvenido');
 });
 Route::post('/', 'UserController@login')->name('user.login');
+Route::resource('profesor','ProfesorController');
