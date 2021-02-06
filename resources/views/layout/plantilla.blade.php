@@ -284,7 +284,12 @@
 @yield('script')
 <!-- AdminLTE App -->
 <script src="/adminlte/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
+<!-- AdminLTE for demo purposes -->}
+<!-- AAAAAAAAAAAA-->
+<!-- AAAAAAAAAAAA-->
+<!-- AAAAAAAAAAAA-->
+<!-- AAAAAAAAAAAA-->
+<!-- AAAAAAAAAAAA-->
 <script src="/adminlte/dist/js/demo.js"></script>
 </body>
 </html>
