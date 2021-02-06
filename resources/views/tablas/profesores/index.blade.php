@@ -25,7 +25,6 @@
                 <th scope="col">Opciones</th>
                 </tr>
             </thead>
-            <!--Puto-->
             <tbody>
                 @foreach($profesor as $itemprofesor)
                 <tr>
