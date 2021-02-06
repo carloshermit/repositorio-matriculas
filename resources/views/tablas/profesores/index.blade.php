@@ -29,7 +29,7 @@
                 @foreach($profesor as $itemprofesor)
                 <tr>
                 <th>{{$itemprofesor->codigo}}</th>
-                <th>{{$itemprofesor->apellidopaterno}}</th>
+                <th>{{$itemprofesor->apellidopaterno}} {{$itemprofesor->apellidomaterno}} {{$itemprofesor->nombres}}</th>
                 <td>
                     <a href="" class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Editar</a>
                     <a href="" class="btn btn-danger btn-sm"><i class="fas fa-edit"></i>Eliminar</a>
