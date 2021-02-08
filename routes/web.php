@@ -21,3 +21,6 @@ Route::get('/bienvenido', function () {
 });
 Route::post('/', 'UserController@login')->name('user.login');
 Route::resource('profesor','ProfesorController');
+Route::resource('curso','CursoController');
+Route::resource('seccion','SeccionController');
+Route::get('curso/{codcurso}/confirmar','CursoController@confirmar')->name('curso.confirmar');

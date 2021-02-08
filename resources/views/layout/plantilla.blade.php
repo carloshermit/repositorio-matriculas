@@ -91,7 +91,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{route('curso.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Cursos</p>
                 </a>
@@ -103,7 +103,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('profesor.index')}}" class="nav-link">
+                <a href="" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Personal</p>
                 </a>

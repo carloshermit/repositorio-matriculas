@@ -119,12 +119,12 @@ CREATE TABLE COLEGIO
 
 CREATE TABLE NIVEL
 ( 
-	codNivel             varchar(08)  Primary Key NOT NULL ,
+	codNivel             serial Primary Key NOT NULL ,
 	descripcion          varchar(40)  NULL 
 )
 
 CREATE TABLE GRADO
-( 
+	( 
 	codGrado             varchar(08)   Primary Key NOT NULL ,
 	codNivel             varchar(08)  NULL ,
 	descripcion          varchar(40)  NULL 
