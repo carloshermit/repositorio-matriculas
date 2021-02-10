@@ -85,7 +85,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{route('alumno.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Alumnos</p>
                 </a>
@@ -103,13 +103,13 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{route('personal.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Personal</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{route('provincia.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Ubicacion Geografica</p>
                 </a>
@@ -169,7 +169,7 @@
 <script src="/adminlte/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-@yield('script')♣
+@yield('script')
 <!-- AdminLTE App -->
 <script src="/adminlte/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->

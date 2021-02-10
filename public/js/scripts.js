@@ -26,8 +26,8 @@ $(document).ready(function(){
                 var tr = `<tr>
                 
                 <td>`+data[i].descripcion+`</td>
-                <td><a href="" class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Editar</a>
-                <a href="" class="btn btn-danger btn-sm"><i class="fas fa-edit"></i>Eliminar</a> </td>
+                <td><a href=seccion/`+data[i].codseccion +`/edit class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Editar</a>
+                <a href=seccion/`+data[i].codseccion +`/confirmar class="btn btn-danger btn-sm"><i class="fas fa-edit"></i>Eliminar</a> </td>
                 </tr>`;
                 $("#Seccion").append(tr)
             }
@@ -36,3 +36,38 @@ $(document).ready(function(){
     });
   });
 
+  $(document).ready(function(){
+    $('#Pais').on('change', function(){
+      var codPais  = $(this).val();
+      if($.trim(codPais) != ''){
+        $.get('/listarDepartamentos/'+codPais, function(data){
+          $('#Departamento').empty();
+          $('#Departamento').append("<option value=''>Selecciona un departamento </option>");
+          $.each(data, function(i, item) {
+            $('#Departamento').append("<option value='" + data[i].coddepartamento + "'>"+ data[i].descripcion + "</option>");
+          })
+        });
+      }
+    });
+  });
+
+  $(document).ready(function(){
+    $('#Departamento').on('change', function(){
+      var codDepartamento = $(this).val();
+      if($.trim(codDepartamento) != ''){
+        $.get('/listarProvincias/'+codDepartamento, function(data){
+            console.log(data);
+          $('#Provincia').html("");
+            for(var i=0;i<data.length;i++){
+                var tr = `<tr>
+                <td>`+data[i].codprovincia+`</td>
+                <td>`+data[i].descripcion+`</td>
+                </tr>`;
+                $("#Provincia").append(tr)
+            }
+        });
+      }
+    });
+  });
+
+  

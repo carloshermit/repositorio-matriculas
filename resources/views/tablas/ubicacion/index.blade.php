@@ -1,23 +1,22 @@
 @extends('layout.plantilla')
 
 @section('contenido')
-<h3>LISTADO DE SECCIONES</h3>
+<h3>LISTADO DE PROVINCIAS</h3>
 <div class="row">
     <div class="col-4">
-        <select class="custom-select" id="Nivel">
-            <option selected>Seleccion un nivel</option>
-            @foreach($nivel as $itemnivel)
-            <option value="{{$itemnivel->codnivel}}">{{$itemnivel->descripcion}}</option>
+        <select class="custom-select" id="Pais">
+            <option selected>Seleccion un pais</option>
+            @foreach($pais as $itempais)
+            <option value="{{$itempais->codpais}}">{{$itempais->descripcion}}</option>
             @endforeach
         </select>
     </div>
     <div class="col-4">
-        <select class="custom-select" id="Grado">
+        <select class="custom-select" id="Departamento">
             
         </select>
     </div>
 </div>
-<a href="{{route('seccion.create')}}" class="btn btn-primary"><i class="fas fa-plus"></i>Nuevo Registro</a>
 <nav class="navbar float-right">
 
 </nav>
@@ -32,18 +31,14 @@
 <table class="table">
             <thead class="thead-dark">
                 <tr>
-                
-                <th scope="col">Seccion</th>
-                <th scope="col">Opciones</th>
+                <th scope="col">Codigo</th>
+                <th scope="col">Descripcion</th>
                 </tr>
             </thead>
-            <tbody id="Seccion">
-                
+            <tbody id="Provincia">
             </tbody>
             </table>
-                
 @endsection
-
 @section('script')
     <script src="/js/scripts.js">
     </script>     

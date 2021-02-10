@@ -1,25 +1,25 @@
-CREATE TABLE ALUMNO
-( 
-	codEducando          Serial primary key,
-	nroMatricula         varchar(10)  NULL ,
-	codModular           varchar(10)  NULL ,
-	fechaBautizo         date  NULL ,
-	parroquiaBautizo     varchar(40)  NULL ,
-	colegioProcedencia   varchar(40)  NULL ,
-	codLengua            varchar(08)  NULL ,
-	codReligion          varchar(08)  NULL ,
-	DNI                  varchar(08)  NULL ,
-	apellidoPaterno      varchar(40)  NULL ,
-	apellidoMaterno      varchar(40)  NULL ,
-	PrimerNombre         varchar(40)  NULL ,
-	OtrosNombres         varchar(40)  NULL ,
-	sexo                 varchar(40)  NULL ,
-	estadoCivil          varchar(40)  NULL ,
-	fechaNacimiento      date  NULL ,
-	fechaIngreso         date  NULL,
-	codDistrito 	     int  NULL ,
-	estado 				 int       Null
+create table alumno(
+	codalumno serial primary key not null,
+	codeducando varchar(14),
+	codmodular varchar(7),
+	dni varchar(8),
+	apellidopaterno varchar(40),
+	apellidomaterno varchar(40),
+	primernombre varchar (40),
+	otrosnombres varchar(40),
+	sexo varchar(40),
+	fechanacimiento date,
+	coddistrito int,
+	fechaingreso char(4),
+	escala char(1),
+	codlengua int,
+	estadocivil varchar(40),
+	codreligion int,
+	fechabautizo date,
+	parroquiabautizo varchar(40),
+	colegioprocedencia varchar(40)
 )
+
 
 CREATE TABLE DETALLE_DOMICILIO
 ( 
@@ -39,24 +39,19 @@ CREATE TABLE DETALLE_DOMICILIO
 	situacion            varchar(40)  NULL 
 )
 
-CREATE TABLE PAIS
-( 
-	codPais              varchar(08)  Primary Key NOT NULL ,
-	descripcion          varchar(40)  NULL 
+create table pais(
+	codpais serial primary key not null,
+	descripcion varchar(40)
+);
+create table departamento(
+	coddepartamento serial primary key not null,
+	codpais int,
+	descripcion varchar(40)
 )
-
-CREATE TABLE DEPARTAMENTO
-( 
-	codDepartamento      varchar(08)  Primary Key  NOT NULL ,
-	codPais              varchar(08)  NOT NULL ,
-	descripcion          varchar(40)  NULL 
-)
-
-CREATE TABLE PROVINCIA
-( 
-	codProvincia         varchar(08)  Primary Key  NOT NULL ,
-	codDepartamento      varchar(08)  NULL ,
-	descripcion          varchar(40)  NULL 
+create table provincia(
+	codprovincia serial primary key not null,
+	coddepartamento int,
+	descripcion varchar(40)
 )
 
 CREATE TABLE DISTRITO
@@ -228,3 +223,9 @@ values(3,'Cuarto');
 insert into grado(codNivel,descripcion)
 values(3,'Quinto');
 
+insert into pais("descripcion")
+	values('Peru')
+insert into departamento("codpais","descripcion")
+	values(1,'La Libertad')
+insert into provincia("coddepartamento","descripcion")
+	values(1,'Trujillo')

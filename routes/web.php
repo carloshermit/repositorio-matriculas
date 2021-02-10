@@ -23,8 +23,15 @@ Route::post('/', 'UserController@login')->name('user.login');
 Route::resource('profesor','ProfesorController');
 Route::resource('curso','CursoController');
 Route::resource('seccion','SeccionController');
+Route::resource('personal','PersonalController');
+Route::resource('provincia','ProvinciaController');
+Route::resource('alumno','AlumnoController');
+
 Route::get('listarGrados/{codNivel}', 'SeccionController@listarGrados');
 Route::get('listarSecciones/{codGrado}', 'SeccionController@listarSecciones');
+Route::get('listarDepartamentos/{codPais}', 'ProvinciaController@listarDepartamentos');
+Route::get('listarProvincias/{codDepartamento}', 'ProvinciaController@listarProvincias');
 
-
+Route::get('seccion/{codseccion}/confirmar','SeccionController@confirmar')->name('seccion.confirmar');
 Route::get('curso/{codcurso}/confirmar','CursoController@confirmar')->name('curso.confirmar');
+Route::get('personal/{codpersonal}/confirmar','PersonalController@confirmar')->name('personal.confirmar');
