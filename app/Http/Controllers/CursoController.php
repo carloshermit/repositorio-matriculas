@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\curso;
+use App\Curso;
 use DB;
 class CursoController extends Controller
 {
@@ -12,8 +12,8 @@ class CursoController extends Controller
     {
         $buscarpor=$request->buscarpor;
         $curso=DB::table('curso')
+        ->where('descripcion','ilike','%'.$buscarpor.'%')
         ->orderBy('codcurso', 'asc')
-        ->where('descripcion','like','%'.$buscarpor.'%')
         ->select('codcurso','descripcion')->paginate($this::PAGINATION);
         return view('tablas/cursos/index',compact('curso','buscarpor'));
     }

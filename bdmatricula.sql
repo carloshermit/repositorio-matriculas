@@ -199,4 +199,32 @@ SELECT  pe.apellidosnombres, pe.telefono, pe.nroseguro, pe.direccion, pe.dni, da
 INSERT INTO public.colegio(
 	descripcion, coddistrito)
 	VALUES ('san juan', '1');
+insert into grado(codNivel,descripcion)
+values(2,'3 Años');
+insert into grado(codNivel,descripcion)
+values(2,'4 Años');
+insert into grado(codNivel,descripcion)
+values(2,'5 Años');
+insert into grado(codNivel,descripcion)
+values(2,'Primero');
+insert into grado(codNivel,descripcion)
+values(2,'Segundo');
+insert into grado(codNivel,descripcion)
+values(2,'Tercero');
+insert into grado(codNivel,descripcion)
+values(2,'Cuarto');
+insert into grado(codNivel,descripcion)
+values(2,'Quinto');
+insert into grado(codNivel,descripcion)
+values(2,'Sexto');
+insert into grado(codNivel,descripcion)
+values(3,'Primero');
+insert into grado(codNivel,descripcion)
+values(3,'Segundo');
+insert into grado(codNivel,descripcion)
+values(3,'Tercero');
+insert into grado(codNivel,descripcion)
+values(3,'Cuarto');
+insert into grado(codNivel,descripcion)
+values(3,'Quinto');
 
