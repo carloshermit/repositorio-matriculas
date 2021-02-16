@@ -24,7 +24,8 @@ class AlumnoController extends Controller
     }
     public function create()
     {
-        return view('tablas/alumnos.create');
+        $pais=DB::table('pais')->get();
+        return view('tablas/alumnos.create',compact('pais'));
     }
 
     public function store(Request $request)

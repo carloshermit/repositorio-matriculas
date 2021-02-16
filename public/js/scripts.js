@@ -71,3 +71,34 @@ $(document).ready(function(){
   });
 
   
+  $(document).ready(function(){
+    $('#Departamento').on('change', function(){
+      var codPais  = $(this).val();
+      if($.trim(codPais) != ''){
+        $.get('/listarProvincias/'+codPais, function(data){
+          $('#Provincia').empty();
+          $('#Provincia').append("<option value=''>Selecciona una provincia </option>");
+          $.each(data, function(i, item) {
+            $('#Provincia').append("<option value='" + data[i].codprovincia + "'>"+ data[i].descripcion + "</option>");
+          })
+        });
+      }
+    });
+  });
+
+
+  
+  $(document).ready(function(){
+    $('#Provincia').on('change', function(){
+      var codPais  = $(this).val();
+      if($.trim(codPais) != ''){
+        $.get('/listarDistritos/'+codPais, function(data){
+          $('#Distrito').empty();
+          $('#Distrito').append("<option value=''>Selecciona un distrito </option>");
+          $.each(data, function(i, item) {
+            $('#Distrito').append("<option value='" + data[i].coddistrito + "'>"+ data[i].descripcion + "</option>");
+          })
+        });
+      }
+    });
+  });

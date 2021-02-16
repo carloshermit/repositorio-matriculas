@@ -54,12 +54,12 @@ create table provincia(
 	descripcion varchar(40)
 )
 
-CREATE TABLE DISTRITO
-( 
-	codDistrito          varchar(08) Primary Key NOT NULL ,
-	codProvincia         varchar(08)  NULL ,
-	descripcion          varchar(40)  NULL
+create TABLE distrito(
+	coddistrito SERIAL PRIMARY KEY,
+	codprovincia int,
+	descripcion VARCHAR(40)
 )
+
 
 CREATE TABLE FAMILIAR
 ( 
@@ -73,17 +73,27 @@ CREATE TABLE FAMILIAR
 	estado				 int
 )
 
-CREATE TABLE LENGUA_MATERNA
-( 
-	codLengua            varchar(08)  Primary Key NOT NULL ,
-	descripcion          varchar(40)  NULL 
+CREATE TABLE LENGUA_MATERNA(
+	CODLENGUA SERIAL PRIMARY KEY,
+	DESCRIPCION VARCHAR(40)
+)
+INSERT INTO LENGUA_MATERNA("descripcion")
+VALUES('CASTELLANO');
+INSERT INTO LENGUA_MATERNA("descripcion")
+VALUES('QUECHUA');
+INSERT INTO LENGUA_MATERNA("descripcion")
+VALUES('AIMARA');
+
+create table religion(
+	codreligion serial primary key,
+	descripcion varchar(40)
 )
 
-CREATE TABLE RELIGION
-( 
-	codReligion          varchar(08)  Primary Key NOT NULL ,
-	descripcion          varchar(40)  NULL 
-)
+insert into religion("descripcion")
+values('Catolico');
+insert into religion("descripcion")
+values('Cristiano');
+
 
 CREATE TABLE PERSONAL
 ( 
@@ -229,3 +239,18 @@ insert into departamento("codpais","descripcion")
 	values(1,'La Libertad')
 insert into provincia("coddepartamento","descripcion")
 	values(1,'Trujillo')
+
+
+INSERT INTO distrito("codprovincia","descripcion")
+VALUES(1,'Trujillo');
+INSERT INTO distrito("codprovincia","descripcion")
+VALUES(1,'Provenir');
+INSERT INTO distrito("codprovincia","descripcion")
+VALUES(1,'Esperanza');
+INSERT INTO distrito("codprovincia","descripcion")
+VALUES(1,'Victor Larco Herrera');
+
+
+insert into alumno("codeducando","codmodular","dni","apellidopaterno","apellidomaterno","primernombre","otrosnombres","sexo","fechanacimiento","coddistrito","fechaingreso","escala","codlengua","estadocivil","codreligion","fechabautizo","parroquiabautizo","colegioprocedencia")
+values('12345678912345','1234567','76174081','Alcantara','Ninatanta','Luis','Fernando','masculino','1996-10-20',4,'2010','C',1,'Soltero',1,'2008-12-10','Parroquia','VRHT')
+

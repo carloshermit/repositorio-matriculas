@@ -26,11 +26,13 @@ Route::resource('seccion','SeccionController');
 Route::resource('personal','PersonalController');
 Route::resource('provincia','ProvinciaController');
 Route::resource('alumno','AlumnoController');
+Route::resource('matricula','MatriculaController');
 
 Route::get('listarGrados/{codNivel}', 'SeccionController@listarGrados');
 Route::get('listarSecciones/{codGrado}', 'SeccionController@listarSecciones');
 Route::get('listarDepartamentos/{codPais}', 'ProvinciaController@listarDepartamentos');
 Route::get('listarProvincias/{codDepartamento}', 'ProvinciaController@listarProvincias');
+Route::get('listarDistritos/{codProvincia}', 'ProvinciaController@listarDistritos');
 
 Route::get('seccion/{codseccion}/confirmar','SeccionController@confirmar')->name('seccion.confirmar');
 Route::get('curso/{codcurso}/confirmar','CursoController@confirmar')->name('curso.confirmar');

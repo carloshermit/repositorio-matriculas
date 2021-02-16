@@ -2,7 +2,6 @@
 
 @section('contenido')
 <h3>LISTADO DE ALUMNOS</h3>
-<a href="{{route('alumno.create')}}" class="btn btn-primary"><i class="fas fa-plus"></i>Nuevo Registro</a>
 <nav class="navbar float-right">
     <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Buscar por nombre" aria-label="Search" id="buscarpor" name="buscarpor" value={{$buscarpor}} >
@@ -31,8 +30,8 @@
                 <th>{{$itemalumno->codeducando}}</th>
                 <th>{{$itemalumno->apellidopaterno}} {{$itemalumno->apellidomaterno}} {{$itemalumno->primernombre}}</th>
                 <td>
-                    <a href="{{route('alumno.edit',$itemalumno->codalumno)}}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Editar</a>
-                    <a href="{{route('alumno.confirmar',$itemalumno->codalumno)}}" class="btn btn-danger btn-sm"><i class="fas fa-edit"></i>Eliminar</a>
+                    <a href="" class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Editar</a>
+                    <a href="   " class="btn btn-danger btn-sm"><i class="fas fa-edit"></i>Eliminar</a>
                 </td>
                 </tr>   
                 @endforeach

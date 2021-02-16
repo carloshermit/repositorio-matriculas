@@ -114,11 +114,28 @@
                   <p>Ubicacion Geografica</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Matricula</p>
+                  <p>
+                    Matriculas
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
                 </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{{route('alumno.create')}}" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon"></i>
+                      <p>Ficha Matricula</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{route('matricula.index')}}" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon"></i>
+                      <p>Lista Matriculas</p>
+                    </a>
+                  </li>
+                </ul>
               </li>
             </ul>
           </li>
