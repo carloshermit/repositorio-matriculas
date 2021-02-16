@@ -25,4 +25,9 @@ class ProvinciaController extends Controller
         return DB::table('provincia')->orderBy('descripcion', 'asc')
         ->where('coddepartamento','=',$codDepartamento)->select('codprovincia','descripcion')->get(); 
     }
+    public function listarDistritos($cod)
+    {   
+        return DB::table('distrito')->orderBy('descripcion', 'asc')
+        ->where('codprovincia','=',$cod)->select('coddistrito','descripcion')->get(); 
+    }
 }

@@ -37,6 +37,21 @@ $(document).ready(function(){
   });
 
   $(document).ready(function(){
+    $('#Pais2').on('change', function(){
+      var codPais  = $(this).val();
+      if($.trim(codPais) != ''){
+        $.get('/listarDepartamentos/'+codPais, function(data){
+          $('#Departamento2').empty();
+          $('#Departamento2').append("<option value=''>Selecciona un departamento </option>");
+          $.each(data, function(i, item) {
+            $('#Departamento2').append("<option value='" + data[i].coddepartamento + "'>"+ data[i].descripcion + "</option>");
+          })
+        });
+      }
+    });
+  });
+
+  $(document).ready(function(){
     $('#Pais').on('change', function(){
       var codPais  = $(this).val();
       if($.trim(codPais) != ''){
@@ -52,18 +67,18 @@ $(document).ready(function(){
   });
 
   $(document).ready(function(){
-    $('#Departamento').on('change', function(){
+    $('#Departamento2').on('change', function(){
       var codDepartamento = $(this).val();
       if($.trim(codDepartamento) != ''){
         $.get('/listarProvincias/'+codDepartamento, function(data){
             console.log(data);
-          $('#Provincia').html("");
+          $('#Provincia2').html("");
             for(var i=0;i<data.length;i++){
                 var tr = `<tr>
                 <td>`+data[i].codprovincia+`</td>
                 <td>`+data[i].descripcion+`</td>
                 </tr>`;
-                $("#Provincia").append(tr)
+                $("#Provincia2").append(tr)
             }
         });
       }

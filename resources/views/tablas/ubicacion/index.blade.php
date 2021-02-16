@@ -4,7 +4,7 @@
 <h3>LISTADO DE PROVINCIAS</h3>
 <div class="row">
     <div class="col-4">
-        <select class="custom-select" id="Pais">
+        <select class="custom-select" id="Pais2">
             <option selected>Seleccion un pais</option>
             @foreach($pais as $itempais)
             <option value="{{$itempais->codpais}}">{{$itempais->descripcion}}</option>
@@ -12,7 +12,7 @@
         </select>
     </div>
     <div class="col-4">
-        <select class="custom-select" id="Departamento">
+        <select class="custom-select" id="Departamento2">
             
         </select>
     </div>
@@ -35,7 +35,7 @@
                 <th scope="col">Descripcion</th>
                 </tr>
             </thead>
-            <tbody id="Provincia">
+            <tbody id="Provincia2">
             </tbody>
             </table>
 @endsection
