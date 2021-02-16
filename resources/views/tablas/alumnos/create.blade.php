@@ -205,6 +205,8 @@
 </form>
 @endsection
 @section('script')
+    <script src="/js/scripts.js">
+    </script>    
     <script src="/select2/bootstrap-select.min.js"></script>     
      <script src="/calendario/js/bootstrap-datepicker.min.js"></script>
      <script src="/calendario/locales/bootstrap-datepicker.es.min.js"></script> 
