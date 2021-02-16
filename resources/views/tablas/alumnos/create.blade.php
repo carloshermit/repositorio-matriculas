@@ -1,5 +1,8 @@
 @extends('layout.plantilla')
-
+@section('estilos')
+<link rel="stylesheet" href="/calendario/css/bootstrap-datepicker.standalone.css">
+<link rel="stylesheet" href="/select2/bootstrap-select.min.css">
+@endsection
 @section('contenido')
 <h1>Crear Registro</h1>
 <form method="POST" action="{{route('alumno.store')}}">
@@ -83,12 +86,15 @@
             </div>
             <div class="col-2">
                 <label for="fechanac">Fecha de Nac.</label>
-                <input type="text" class="form-control @error('fechanac') is-invalid @enderror" id="fechanac" name="fechanac"  placeholder="Ingrese Fecha de Nacimiento">
-                @error('fechanac')
-                    <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                <div class="form-group">                            
+                    <div class="input-group date form_date " data-date-format="dd/mm/yyyy" data-provide="datepicker">
+                        <input type="text"  class="form-control" id="fechanac" name="fechanac"
+                               value="{{ Carbon\Carbon::now()->format('d/m/Y') }}" style="text-align:center;">
+                        <div class="input-group-btn">                                        
+                            <button class="btn btn-primary date-set" type="button"><i class="fa fa-calendar"></i></button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-4">
                 <label for="pais">Pais</label>
@@ -200,5 +206,8 @@
 @endsection
 @section('script')
     <script src="/js/scripts.js">
-    </script>     
+    </script>    
+    <script src="/select2/bootstrap-select.min.js"></script>     
+     <script src="/calendario/js/bootstrap-datepicker.min.js"></script>
+     <script src="/calendario/locales/bootstrap-datepicker.es.min.js"></script> 
 @endsection
