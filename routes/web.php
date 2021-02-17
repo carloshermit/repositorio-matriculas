@@ -24,6 +24,10 @@ Route::resource('profesor','ProfesorController');
 Route::resource('curso','CursoController');
 Route::resource('seccion','SeccionController');
 Route::resource('personal','PersonalController');
+Route::get('cancelar',function(){
+    return redirect()->route('personal.index')->with('datos','Accion Cancelada ..!');
+})->name('cancelar');
+
 Route::resource('provincia','ProvinciaController');
 Route::resource('alumno','AlumnoController');
 Route::resource('matricula','MatriculaController');
@@ -37,3 +41,4 @@ Route::get('listarDistritos/{codProvincia}', 'ProvinciaController@listarDistrito
 Route::get('seccion/{codseccion}/confirmar','SeccionController@confirmar')->name('seccion.confirmar');
 Route::get('curso/{codcurso}/confirmar','CursoController@confirmar')->name('curso.confirmar');
 Route::get('personal/{codpersonal}/confirmar','PersonalController@confirmar')->name('personal.confirmar');
+
