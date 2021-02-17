@@ -24,4 +24,21 @@ class MatriculaController extends Controller
         ->paginate($this::PAGINATION); 
         return view('tablas/matricula/index',compact('matricula','buscarpor'));
     }
+    public function create()
+    {   
+        $nivel=DB::table('nivel')->get();
+        return view('tablas/matricula.create',compact('nivel'));
+    }
+    public function store(Request $request)
+    {   
+        $matricula=new Matricula();
+        $matricula->codalumno=$request->codalumno;
+        $matricula->codseccion=$request->Seccion2;
+        $matricula->fecha=$request->fechamatricula;
+        $matricula->escala=$request->escala;
+        $matricula->añoingreso=$request->añoingreso;
+        $matricula->nromatricula=$request->nromatricula;
+        $matricula->save();
+        return redirect()->route('matricula.index')->with('datos','Registro Nuevo Guardado!!');
+    }
 }
