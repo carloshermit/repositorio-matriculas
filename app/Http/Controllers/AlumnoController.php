@@ -31,27 +31,47 @@ class AlumnoController extends Controller
     public function store(Request $request)
     {
         $data=request()->validate([
-            'codeducando'=>'required|max:40',
-            'codmodular'=>'required|max:40',
+            'codeducando'=>'required|max:14',
+            'codmodular'=>'max:7',
             'dni'=>'required|digits:8',
             'appaterno'=>'required|max:40',
             'apmaterno'=>'required|max:40',
             'primernombre'=>'required|max:40',
             'otronombres'=>'required|max:40',
             //'sexo'=>'required|max:40',
-            //'fechanac'=>'required|max:40', 
+            //'fechanacimiento'=>'required|max:40',
+            //coddistrito
+            'añoingreso'=>'required|digits:4',
+            'escala'=>'required|max:1',
+            //codlengua
+            //estadocivil
+            //religion
+            //fechabautizo
+            'parroquiabautizo'=>'max:40',
+            'colegioprocedencia'=>'max:40'
+
         ],
         [
-            'codeducando.required'=>'Ingrese nombres de alumno',
-            'codeducando.max'=>'Maximo 60 caracteres para nombres',
-            'codmodular.required'=>'Ingrese direccion de alumno',
-            'codmodular.max'=>'Maximo 60 caracteres para direccion',
-            'dni.required'=>'Ingrese dni de alumno',
+            'codeducando.required'=>'Ingrese codigo del educando',
+            'codeducando.max'=>'Maximo 14 caracteres para codigo del educando',
+            //'codmodular.required'=>'Ingrese direccion de alumno',
+            'codmodular.max'=>'Maximo 7 caracteres para Codigo modular',
+            'dni.required'=>'Ingrese DNI de alumno',
             'dni.digits'=>'DNI debe tener 8 digitos',
-            'appaterno.required'=>'Ingrese telefono del alumno',
-            'appaterno'=>'Maximo 10 caracteres para telefono',
-            'apmaterno.required'=>'Ingrese nro de seguro del alumno',
-            'apmaterno'=>'Maximo 10 caracteres para nro de seguro',
+            'appaterno.required'=>'Ingrese apellido paterno del alumno',
+            'appaterno.max'=>'Maximo 40 caracteres para apellido',
+            'apmaterno.required'=>'Ingrese apellido materno del alumno',
+            'apmaterno.max'=>'Maximo 40 caracteres para apellido',
+            'primernombre.required'=>'Ingrese nombre del alumno',
+            'primernombre.max'=>'Maximo 40 caracteres para nombre',
+            'otronombres.required'=>'Ingrese otro nombre del alumno',
+            'otronombres.max'=>'Maximo 40 caracteres para otro nombre',
+            'añoingreso.required'=>'Ingrese año de ingreso',
+            'añoingreso.max'=>'Maximo 4 caracteres para año de ingreso',
+            'escala.required'=>'Ingrese escala',
+            'escala.max'=>'Maximo 1 caracter para escala',
+            'parroquiabautizo.max'=>'Maximo 40 caracteres para parroquia de bautizo',
+            'colegioprocedencia.max'=>'Maximo 40 caracteres para colegio de procedencia',
         ]);
         $arr = explode('/', $request->fechanac);
         $nFecha = $arr[2].'-'.$arr[1].'-'.$arr[0];         
