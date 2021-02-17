@@ -131,3 +131,18 @@ $(document).ready(function(){
       }
     });
   });
+
+
+
+
+  function FbotonOn() {
+    var codAlumno = document.getElementById('codalumno').value;
+    console.log(codAlumno);
+    $.get('/buscarAlumno/'+codAlumno, function(data){
+      console.log(data);
+      $('#appaterno').val(data[0].apellidopaterno);
+      $('#apmaterno').val(data[0].apellidomaterno);
+      $('#nombre1').val(data[0].primernombre);
+      $('#nombre2').val(data[0].otrosnombres);
+    })
+  }

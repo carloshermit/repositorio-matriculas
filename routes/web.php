@@ -33,6 +33,7 @@ Route::get('listarSecciones/{codGrado}', 'SeccionController@listarSecciones');
 Route::get('listarDepartamentos/{codPais}', 'ProvinciaController@listarDepartamentos');
 Route::get('listarProvincias/{codDepartamento}', 'ProvinciaController@listarProvincias');
 Route::get('listarDistritos/{codProvincia}', 'ProvinciaController@listarDistritos');
+Route::get('buscarAlumno/{codAlumno}', 'MatriculaController@buscarAlumno');
 
 Route::get('seccion/{codseccion}/confirmar','SeccionController@confirmar')->name('seccion.confirmar');
 Route::get('curso/{codcurso}/confirmar','CursoController@confirmar')->name('curso.confirmar');
