@@ -26,6 +26,7 @@
                 <th scope="col">Grado</th>
                 <th scope="col">Seccion</th>
                 <th scope="col">Opciones</th>
+                <th scope="col">Familiar</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,6 +40,9 @@
                 <td>
                     <a href="{{route('matricula.edit',$itemmatricula->codmatricula)}}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Editar</a>
                     <a href="" class="btn btn-danger btn-sm"><i class="fas fa-edit"></i>Eliminar</a>
+                </td>
+                <td>
+                    <a href="{{route('matricula.add',$itemmatricula->codmatricula)}}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Familiar</a>
                 </td>
                 </tr>   
                 @endforeach

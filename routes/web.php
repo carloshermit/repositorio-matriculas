@@ -37,3 +37,5 @@ Route::get('listarDistritos/{codProvincia}', 'ProvinciaController@listarDistrito
 Route::get('seccion/{codseccion}/confirmar','SeccionController@confirmar')->name('seccion.confirmar');
 Route::get('curso/{codcurso}/confirmar','CursoController@confirmar')->name('curso.confirmar');
 Route::get('personal/{codpersonal}/confirmar','PersonalController@confirmar')->name('personal.confirmar');
+Route::get('matricula/{codmatricula}/add','MatriculaController@add')->name('matricula.add');
+Route::get('matricula/{codalumno}/createadd','MatriculaController@createadd')->name('matricula.createadd');

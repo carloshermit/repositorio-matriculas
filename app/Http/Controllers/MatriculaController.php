@@ -57,5 +57,20 @@ class MatriculaController extends Controller
 
         return view('tablas/matricula.edit',compact('matricula','nivel'));
     }
-    
+    public function add($id)
+    {
+        $matricula= DB::table('familiar as f')->join('alumno as a','a.codalumno','=','f.codalumno')
+        ->join('matricula as m','m.codalumno','=','a.codalumno')
+        ->where('m.codmatricula','=',$id)
+        ->select('m.codmatricula','m.codalumno','f.apellidopaterno','f.apellidomaterno','f.nombreprimero','f.nombreotros','f.celular')->get();
+        return view('tablas/matricula.add',compact('matricula'));
+    }
+    public function createadd($id)
+    {
+        $matricula= DB::table('familiar as f')->join('alumno as a','a.codalumno','=','f.codalumno')
+        ->join('matricula as m','m.codalumno','=','a.codalumno')
+        ->where('m.codmatricula','=',$id)
+        ->select('m.codmatricula','m.codalumno','f.apellidopaterno','f.apellidomaterno','f.nombreprimero','f.nombreotros','f.celular')->get();
+        return view('tablas/matricula.add',compact('matricula'));
+    }
 }
