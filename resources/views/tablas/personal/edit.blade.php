@@ -84,7 +84,7 @@
 
 
   <button type="submit" class="btn btn-primary">Grabar</button>
-  <a href="" class="btn btn-danger"><i class="fas fa-ban"></i>Cancelar</a>
+  <a href="{{route('cancelar1')}}" class="btn btn-danger"><i class="fas fa-ban"></i>Cancelar</a>
 </form>
 @endsection
 @section('script')

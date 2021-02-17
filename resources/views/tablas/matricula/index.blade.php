@@ -38,7 +38,7 @@
                 <th>{{$itemmatricula->seccion}}</th>
                 <td>
                     <a href="{{route('matricula.edit',$itemmatricula->codmatricula)}}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Editar</a>
-                    <a href="" class="btn btn-danger btn-sm"><i class="fas fa-edit"></i>Eliminar</a>
+                    <a href="{{route('matricula.confirmar',$itemmatricula->codmatricula)}}" class="btn btn-danger btn-sm"><i class="fas fa-edit"></i>Eliminar</a>
                 </td>
                 </tr>   
                 @endforeach

@@ -71,4 +71,17 @@ class MatriculaController extends Controller
         return DB::table('alumno')
         ->where('codeducando','=',$cod)->select('apellidopaterno','apellidomaterno','primernombre','otrosnombres')->get(); 
     }
+
+    public function confirmar($id)
+    {
+        $matricula=Matricula::findOrFail($id);
+        return view('tablas/matricula.confirmar',compact('matricula'));
+    }
+    public function destroy($id)
+    {
+        $matricula=Matricula::findOrFail($id);
+        DB::table('matricula')->where('codmatricula', '=', $id)->delete();
+        $matricula->save(); 
+        return redirect()->route('matricula.index')->with('datos','Registro Eliminado');
+    }
 }
