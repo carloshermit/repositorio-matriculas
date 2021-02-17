@@ -31,8 +31,12 @@ class MatriculaController extends Controller
     }
     public function store(Request $request)
     {   
+        
+        $alumno=DB::table('alumno')
+        ->select('codalumno')
+        ->where('codeducando','=',$request->codalumno)->first();
         $matricula=new Matricula();
-        $matricula->codalumno=$request->codalumno;
+        $matricula->codalumno=$alumno->codalumno;
         $matricula->codseccion=$request->Seccion2;
         $matricula->fecha=$request->fechamatricula;
         $matricula->escala=$request->escala;
