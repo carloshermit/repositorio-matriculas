@@ -144,8 +144,8 @@ CREATE TABLE GRADO_COLEGIO
 
 CREATE TABLE SECCION
 ( 
-	codSeccion           Serial  Primary Key ,
-	codGradoColegio      varchar(08)  NOT NULL ,
+	codseccion           Serial  Primary Key ,
+	codgrado     		 int,
 	descripcion          varchar(40)  NULL 
 )
 

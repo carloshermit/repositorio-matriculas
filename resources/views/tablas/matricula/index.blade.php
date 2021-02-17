@@ -1,39 +1,48 @@
 @extends('layout.plantilla')
-@section('estilos')
-<link rel="stylesheet" href="/calendario/css/bootstrap-datepicker.standalone.css">
-<link rel="stylesheet" href="/select2/bootstrap-select.min.css">
-@endsection
+
 @section('contenido')
-<h1>Crear Registro Matricula</h1>
-<div class="form-group">
-        <div class="row">
-            <div class="col-4">
-                <label for="codeducando">Código Educando</label>
-                <input type="text" class="form-control @error('codeducando') is-invalid @enderror" id="codeducando" name="codeducando"  placeholder="Ingrese Codigo Educando">
-                @error('codeducando')
-                    <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                    </span>
-                @enderror    
-            </div>
-            <div class="col-4">
-                <label for="codmodular">Código Modular</label>
-                <input type="text" class="form-control @error('codmodular') is-invalid @enderror" id="dnicodmodular" name="codmodular"  placeholder="Ingrese Codigo Modular">
-                @error('codmodular')
-                    <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-            <div class="col-4">
-                <label for="dni">DNI</label>
-                <input type="text" class="form-control @error('dni') is-invalid @enderror" id="dni" name="dni"  placeholder="Ingrese DNI">
-                @error('dni')
-                    <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-        </div>
-        </div>
+<h3>LISTADO DE MATRICULAS</h3>
+<nav class="navbar float-right">
+    <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Buscar por nro" aria-label="Search" id="buscarpor" name="buscarpor" value={{$buscarpor}} >
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
+</nav>
+@if(session('datos'))
+<div class="alert alert-warning alert-dismissile fade show mt-3" role="alert">
+    {{session ('datos') }}
+    <button class="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+<table class="table">
+            <thead class="thead-dark">
+                <tr>
+                <th scope="col">Codigo</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Nivel</th>
+                <th scope="col">Grado</th>
+                <th scope="col">Seccion</th>
+                <th scope="col">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($matricula as $itemmatricula)
+                <tr>
+                <th>{{$itemmatricula->nromatricula}}</th>
+                <th>{{$itemmatricula->apellidopaterno}} {{$itemmatricula->apellidomaterno}} {{$itemmatricula->primernombre}} {{$itemmatricula->otrosnombres}}</th>
+                <th>{{$itemmatricula->nivel}}</th>
+                <th>{{$itemmatricula->grado}}</th>
+                <th>{{$itemmatricula->seccion}}</th>
+                <td>
+                    <a href="" class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Editar</a>
+                    <a href="" class="btn btn-danger btn-sm"><i class="fas fa-edit"></i>Eliminar</a>
+                </td>
+                </tr>   
+                @endforeach
+            </tbody>
+            </table>
+    {{$matricula->links()}}
+            
 @endsection

@@ -6,16 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Matricula extends Model
 {
-    protected $table="alumno_seccion";
-    protected $primaryKey="codalumnoseccion";
+    protected $table="matricula";
+    protected $primaryKey="codmatricula";
     public $timestamps =false;
     protected $fillable = [
-        'codseccion',"codeducando",
+        'nromatricula','codalumno','codseccion','fecha','escala','añoingreso'
     ];
 
     public function alumno()
     {
-        return $this->hasOne('App\Alumno','codeducando','codeducando');
+        return $this->hasOne('App\Alumno','codalumo','codalumo');
     }
     public function seccion()
     {
