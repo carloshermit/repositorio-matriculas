@@ -24,14 +24,13 @@ class MatriculaController extends Controller
         ->paginate($this::PAGINATION); 
         return view('tablas/matricula/index',compact('matricula','buscarpor'));
     }
-    public function create()
+    public function create(Request $request)
     {   
         $nivel=DB::table('nivel')->get();
         return view('tablas/matricula.create',compact('nivel'));
     }
     public function store(Request $request)
     {   
-        
         $alumno=DB::table('alumno')
         ->select('codalumno')
         ->where('codeducando','=',$request->codalumno)->first();
@@ -53,10 +52,11 @@ class MatriculaController extends Controller
         ->join('grado as g','g.codgrado','=','s.codgrado')
         ->join('nivel as n','n.codnivel','=','g.codnivel')
         ->where('m.codmatricula','=',$id)
-        ->select('m.codmatricula','m.nromatricula','m.fecha','a.apellidopaterno','a.apellidomaterno','a.primernombre','a.otrosnombres','s.descripcion as seccion','g.descripcion as grado','n.descripcion as nivel')->first();
+        ->select('m.codmatricula','m.nromatricula','m.escala','m.fecha','m.añoingreso','a.apellidopaterno','a.apellidomaterno','a.primernombre','a.otrosnombres','s.descripcion as seccion','g.descripcion as grado','n.descripcion as nivel')->first();
 
         return view('tablas/matricula.edit',compact('matricula','nivel'));
     }
+<<<<<<< HEAD
     public function add($id)
     {
         $matricula= DB::table('familiar as f')->join('alumno as a','a.codalumno','=','f.codalumno')
@@ -72,5 +72,21 @@ class MatriculaController extends Controller
         ->where('m.codmatricula','=',$id)
         ->select('m.codmatricula','m.codalumno','f.apellidopaterno','f.apellidomaterno','f.nombreprimero','f.nombreotros','f.celular')->get();
         return view('tablas/matricula.add',compact('matricula'));
+=======
+    public function update(Request $request, $id)
+    {
+        $matricula=Matricula::findOrFail($id);
+        $matricula->codseccion=$request->Seccion2;
+        $matricula->añoingreso=$request->añoingreso;
+        $matricula->escala=$request->escala;
+        $matricula->save(); 
+        return redirect()->route('matricula.index')->with('datos','Registro Actualizado');
+    }
+
+    public function buscarAlumno($cod)
+    {   
+        return DB::table('alumno')
+        ->where('codeducando','=',$cod)->select('apellidopaterno','apellidomaterno','primernombre','otrosnombres')->get(); 
+>>>>>>> 384375bd388de7d12f5cabe1f76123c37d7e78a7
     }
 }
