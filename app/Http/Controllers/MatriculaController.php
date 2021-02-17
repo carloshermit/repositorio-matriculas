@@ -56,6 +56,23 @@ class MatriculaController extends Controller
 
         return view('tablas/matricula.edit',compact('matricula','nivel'));
     }
+<<<<<<< HEAD
+    public function add($id)
+    {
+        $matricula= DB::table('familiar as f')->join('alumno as a','a.codalumno','=','f.codalumno')
+        ->join('matricula as m','m.codalumno','=','a.codalumno')
+        ->where('m.codmatricula','=',$id)
+        ->select('m.codmatricula','m.codalumno','f.apellidopaterno','f.apellidomaterno','f.nombreprimero','f.nombreotros','f.celular')->get();
+        return view('tablas/matricula.add',compact('matricula'));
+    }
+    public function createadd($id)
+    {
+        $matricula= DB::table('familiar as f')->join('alumno as a','a.codalumno','=','f.codalumno')
+        ->join('matricula as m','m.codalumno','=','a.codalumno')
+        ->where('m.codmatricula','=',$id)
+        ->select('m.codmatricula','m.codalumno','f.apellidopaterno','f.apellidomaterno','f.nombreprimero','f.nombreotros','f.celular')->get();
+        return view('tablas/matricula.add',compact('matricula'));
+=======
     public function update(Request $request, $id)
     {
         $matricula=Matricula::findOrFail($id);
@@ -70,6 +87,7 @@ class MatriculaController extends Controller
     {   
         return DB::table('alumno')
         ->where('codeducando','=',$cod)->select('apellidopaterno','apellidomaterno','primernombre','otrosnombres')->get(); 
+>>>>>>> 384375bd388de7d12f5cabe1f76123c37d7e78a7
     }
 
     public function confirmar($id)

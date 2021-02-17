@@ -38,6 +38,7 @@ Route::get('buscarAlumno/{codAlumno}', 'MatriculaController@buscarAlumno');
 Route::get('seccion/{codseccion}/confirmar','SeccionController@confirmar')->name('seccion.confirmar');
 Route::get('curso/{codcurso}/confirmar','CursoController@confirmar')->name('curso.confirmar');
 Route::get('personal/{codpersonal}/confirmar','PersonalController@confirmar')->name('personal.confirmar');
+<<<<<<< HEAD
 Route::get('matricula/{codmatricula}/confirmar','MatriculaController@confirmar')->name('matricula.confirmar');
 
 Route::get('cancelar1',function(){
@@ -55,3 +56,11 @@ Route::get('cancelar4',function(){
 Route::get('cancelar5',function(){
     return redirect()->route('matricula.index')->with('datos','Accion Cancelada ..!');
 })->name('cancelar5');
+=======
+<<<<<<< HEAD
+Route::get('matricula/{codmatricula}/add','MatriculaController@add')->name('matricula.add');
+Route::get('matricula/{codalumno}/createadd','MatriculaController@createadd')->name('matricula.createadd');
+=======
+
+>>>>>>> 384375bd388de7d12f5cabe1f76123c37d7e78a7
+>>>>>>> 2679b9132dbbb15f5ea8f605b2e859d45069709e
