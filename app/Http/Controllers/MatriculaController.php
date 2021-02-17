@@ -20,7 +20,7 @@ class MatriculaController extends Controller
         ->join('grado as g','g.codgrado','=','s.codgrado')
         ->join('nivel as n','n.codnivel','=','g.codnivel')
         ->where('m.nromatricula','ilike','%'.$buscarpor.'%')
-        ->select('m.nromatricula','a.apellidopaterno','a.apellidomaterno','a.primernombre','a.otrosnombres','s.descripcion as seccion','g.descripcion as grado','n.descripcion as nivel')
+        ->select('m.codmatricula','m.nromatricula','a.apellidopaterno','a.apellidomaterno','a.primernombre','a.otrosnombres','s.descripcion as seccion','g.descripcion as grado','n.descripcion as nivel')
         ->paginate($this::PAGINATION); 
         return view('tablas/matricula/index',compact('matricula','buscarpor'));
     }
@@ -41,4 +41,16 @@ class MatriculaController extends Controller
         $matricula->save();
         return redirect()->route('matricula.index')->with('datos','Registro Nuevo Guardado!!');
     }
+    public function edit($id)
+    {
+        $matricula=DB::table('matricula as m')->join('alumno as a','a.codalumno','=','m.codalumno')
+        ->join('seccion as s','m.codseccion','=','s.codseccion')
+        ->join('grado as g','g.codgrado','=','s.codgrado')
+        ->join('nivel as n','n.codnivel','=','g.codnivel')
+        ->where('m.codmatricula','=',$id)
+        ->select('m.codmatricula','m.nromatricula','a.apellidopaterno','a.apellidomaterno','a.primernombre','a.otrosnombres','s.descripcion as seccion','g.descripcion as grado','n.descripcion as nivel')->get();
+
+        return view('tablas/matricula.edit',compact('matricula'));
+    }
+    
 }
