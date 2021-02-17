@@ -20,7 +20,7 @@
             </div>
             <div class="col-4">
                 <label for="codmodular">Código Modular</label>
-                <input type="text" class="form-control @error('codmodular') is-invalid @enderror" id="dnicodmodular" name="codmodular"  placeholder="Ingrese Codigo Modular">
+                <input type="text" class="form-control @error('codmodular') is-invalid @enderror" id="codmodular" name="codmodular"  placeholder="Ingrese Codigo Modular">
                 @error('codmodular')
                     <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -78,7 +78,7 @@
         <div class="row">
             <div class="col-2">
                 <label for="sexo">Sexo</label>
-                <select class="form-control" name="Nivel" id="Nivel">
+                <select class="form-control" name="sexo" id="sexo">
                     <option selected>Seleccione Sexo</option>
                     <option value="Masculino" >Masculino</option>
                     <option value="Femenino" >Femenino</option>
@@ -137,62 +137,62 @@
             </div>
             <div class="col-4">
                 <label for="distrito">Distrito</label>
-                <select class="custom-select" id="Distrito">
+                <select class="custom-select" id="Distrito" name="Distrito">
                 </select>
             </div>
         </div>
         <div class="row">
             <div class="col-4">
                 <label for="lenguamat">Lengua Materna</label>
-                <input type="text" class="form-control @error('lenguamat') is-invalid @enderror" id="lenguamat" name="lenguamat"  placeholder="Ingrese Lengua Materna">
-                @error('lenguamat')
-                    <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                    </span>
-                @enderror    
+                <select class="custom-select" id="lenguamat" name="lenguamat">
+                    <option selected>Lengua Materna</option>
+                    <option value="1">Castellano</option>
+                    <option value="2">Quechua</option>
+                </select>
             </div>
             <div class="col-4">
                 <label for="estadocivil">Estado Civil</label>
-                <input type="text" class="form-control @error('estadocivil') is-invalid @enderror" id="estadocivil" name="estadocivil"  placeholder="Ingrese Estado Civil">
-                @error('estadocivil')
-                    <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                <select class="custom-select" id="estadocivil" name="estadocivil">
+                    <option selected>Estado Civil</option>
+                    <option value="SOLTERO">SOLTERO</option>
+                    <option value="CASADO">CASADO</option>
+                </select>
             </div>
             <div class="col-4">
-                <label for="dni">Religion</label>
-                <input type="text" class="form-control @error('dni') is-invalid @enderror" id="dni" name="dni"  placeholder="Ingrese DNI">
-                @error('dni')
-                    <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                <label for="codreligion">Religion</label>
+                <select class="custom-select" id="codreligion" name="codreligion">
+                    <option selected>Religion</option>
+                    <option value="1">CATOLICO</option>
+                    <option value="2">ATEO</option>
+                </select>
             </div>
         </div>
         <div class="row">
             <div class="col-4">
-                <label for="dni">Fecha Bautizo</label>
-                <input type="text" class="form-control @error('dni') is-invalid @enderror" id="dni" name="dni"  placeholder="Ingrese DNI">
-                @error('dni')
-                    <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                    </span>
-                @enderror    
+                <label for="fechabautizo">Fecha Bautizo</label>
+                <div class="form-group">                            
+                    <div class="input-group date form_date " data-date-format="dd/mm/yyyy" data-provide="datepicker">
+                        <input type="text"  class="form-control" id="fechabautizo" name="fechabautizo"
+                               style="text-align:center;">
+                        <div class="input-group-btn">                                        
+                            <button class="btn btn-primary date-set" type="button"><i class="fa fa-calendar"></i></button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-4">
-                <label for="dni">Parroquia de Bautizo</label>
-                <input type="text" class="form-control @error('dni') is-invalid @enderror" id="dni" name="dni"  placeholder="Ingrese DNI">
-                @error('dni')
+                <label for="parroquiabautizo">Parroquia de Bautizo</label>
+                <input type="text" class="form-control @error('parroquiabautizo') is-invalid @enderror" id="parroquiabautizo" name="parroquiabautizo"  placeholder="Ingrese Parroquia de Bautizo">
+                @error('parroquiabautizo')
                     <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                     </span>
                 @enderror
             </div>
             <div class="col-4">
-                <label for="dni">Colegio Procedencia</label>
-                <input type="text" class="form-control @error('dni') is-invalid @enderror" id="dni" name="dni"  placeholder="Ingrese DNI">
-                @error('dni')
+                <label for="colegioprocedencia">Colegio Procedencia</label>
+                <input type="text" class="form-control @error('colegioprocedencia') is-invalid @enderror" id="colegioprocedencia" name="colegioprocedencia"  placeholder="Ingrese Colegio de Procedencia">
+                @error('colegioprocedencia')
                     <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                     </span>
