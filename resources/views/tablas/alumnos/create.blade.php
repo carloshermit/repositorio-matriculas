@@ -20,7 +20,7 @@
             </div>
             <div class="col-4">
                 <label for="codmodular">Código Modular</label>
-                <input type="text" class="form-control @error('codmodular') is-invalid @enderror" id="dnicodmodular" name="codmodular"  placeholder="Ingrese Codigo Modular">
+                <input type="text" class="form-control @error('codmodular') is-invalid @enderror" id="codmodular" name="codmodular"  placeholder="Ingrese Codigo Modular">
                 @error('codmodular')
                     <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -161,9 +161,9 @@
                 @enderror
             </div>
             <div class="col-4">
-                <label for="dni">Religion</label>
-                <input type="text" class="form-control @error('dni') is-invalid @enderror" id="dni" name="dni"  placeholder="Ingrese DNI">
-                @error('dni')
+                <label for="codreligion">Religion</label>
+                <input type="text" class="form-control @error('codreligion') is-invalid @enderror" id="codreligion" name="codreligion"  placeholder="Ingrese Religion">
+                @error('codreligion')
                     <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                     </span>
@@ -172,27 +172,27 @@
         </div>
         <div class="row">
             <div class="col-4">
-                <label for="dni">Fecha Bautizo</label>
-                <input type="text" class="form-control @error('dni') is-invalid @enderror" id="dni" name="dni"  placeholder="Ingrese DNI">
-                @error('dni')
+                <label for="fechbautizo">Fecha Bautizo</label>
+                <input type="text" class="form-control @error('fechbautizo') is-invalid @enderror" id="fechbautizo" name="fechbautizo"  placeholder="Ingrese Fecha Bautizo">
+                @error('fechbautizo')
                     <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                     </span>
                 @enderror    
             </div>
             <div class="col-4">
-                <label for="dni">Parroquia de Bautizo</label>
-                <input type="text" class="form-control @error('dni') is-invalid @enderror" id="dni" name="dni"  placeholder="Ingrese DNI">
-                @error('dni')
+                <label for="parroquiabautizo">Parroquia de Bautizo</label>
+                <input type="text" class="form-control @error('parroquiabautizo') is-invalid @enderror" id="parroquiabautizo" name="parroquiabautizo"  placeholder="Ingrese Parroquia de Bautizo">
+                @error('parroquiabautizo')
                     <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                     </span>
                 @enderror
             </div>
             <div class="col-4">
-                <label for="dni">Colegio Procedencia</label>
-                <input type="text" class="form-control @error('dni') is-invalid @enderror" id="dni" name="dni"  placeholder="Ingrese DNI">
-                @error('dni')
+                <label for="colegioprocedencia">Colegio Procedencia</label>
+                <input type="text" class="form-control @error('colegioprocedencia') is-invalid @enderror" id="colegioprocedencia" name="colegioprocedencia"  placeholder="Ingrese Colegio de Procedencia">
+                @error('colegioprocedencia')
                     <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                     </span>
