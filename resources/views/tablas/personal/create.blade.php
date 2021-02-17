@@ -15,7 +15,7 @@
   </div>
   <div class="form-group">
     <label for="nombres">Apellidos y nombres</label>
-    <input type="text" class="form-control @error('nombres') is-invalid @enderror" id="nombres" name="nombres"  placeholder="Ingrese apellidos y nombres">
+    <input type="text" class="form-control @error('nombres') is-invalid @enderror" id="nombres" name="nombres" value="{{old('nombres')}}" placeholder="Ingrese apellidos y nombres">
     @error('nombres')
         <span class="invalid-feedback" role="alert">
         <strong>{{ $message }}</strong>
