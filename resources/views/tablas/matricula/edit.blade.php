@@ -1,0 +1,45 @@
+@extends('layout.plantilla')
+@section('estilos')
+<link rel="stylesheet" href="/calendario/css/bootstrap-datepicker.standalone.css">
+<link rel="stylesheet" href="/select2/bootstrap-select.min.css">
+@endsection
+@section('contenido')
+<h1>Crear Registro</h1>
+<form method="POST" action="{{ route('matricula.update',$matricula->codmatricula) }}">
+@method('put')
+@csrf
+<div class="form-group">
+<div class="row">
+    <div class="col-3">
+    <label for="nombre">Codigo Alumno</label>
+    <input type="text" class="form-control" id="codalumno" name="codalumno"  value="{{$matricula->codmatricula}}">
+    </div>
+    <div class="col-3">
+    <label for="nombre">Numero Matricula</label>
+    <input type="text" class="form-control" id="nromatricula" name="nromatricula"  value="{{$matricula->nromatricula}}">
+    </div>
+    <div class="col-3">
+    <label for="nombre">Fecha</label>
+    <div class="form-group">                            
+                    <div class="input-group date form_date " data-date-format="dd/mm/yyyy" data-provide="datepicker">
+                        <input type="text"  class="form-control" id="fechamatricula" name="fechamatricula"
+                        value="{{$matricula->fecha}}" style="text-align:center;">
+                        <div class="input-group-btn">                                        
+                            <button class="btn btn-primary date-set" type="button"><i class="fa fa-calendar"></i></button>
+                        </div>
+                    </div>
+                </div>
+    </div>
+</div>
+
+</div>
+<button type="submit" class="btn btn-primary">Grabar</button>
+</form>
+@endsection
+@section('script')
+    <script src="/js/scripts.js">
+    </script>    
+    <script src="/select2/bootstrap-select.min.js"></script>     
+     <script src="/calendario/js/bootstrap-datepicker.min.js"></script>
+     <script src="/calendario/locales/bootstrap-datepicker.es.min.js"></script>  
+@endsection
