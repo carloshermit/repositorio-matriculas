@@ -31,7 +31,52 @@
                 </div>
     </div>
 </div>
-
+<div class="row">
+    <div class="col-3">
+    <label for="nombre">Apellido Paterno</label>
+    <input type="text" class="form-control" id="añoingreso" name="añoingreso"  placeholder="Ingrese Año Ingreso">
+    </div>
+    <div class="col-3">
+    <label for="nombre">Apellido Materno</label>
+    <input type="text" class="form-control" id="añoingreso" name="añoingreso"  placeholder="Ingrese Año Ingreso">
+    </div>
+    <div class="col-3">
+    <label for="nombre">Primer nombre</label>
+    <input type="text" class="form-control" id="añoingreso" name="añoingreso"  placeholder="Ingrese Año Ingreso">
+    </div>
+    <div class="col-3">
+    <label for="nombre">Otros nombres</label>
+    <input type="text" class="form-control" id="añoingreso" name="añoingreso"  placeholder="Ingrese Año Ingreso">
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+    <label for="nombre">Nivel</label>
+    <select class="custom-select" name="" id="Nivel">
+    @foreach($nivel as $itemnivel)
+    <option value="{{$itemnivel->codnivel}}">{{$itemnivel->descripcion}}</option>
+    @endforeach
+    </select>
+    </div>
+    <div class="col-3">
+    <label for="nombre">Grado</label>
+    <select class="form-control" id="Grado" name="Grado"> </select>
+    </div>
+    <div class="col-3">
+    <label for="nombre">Seccion</label>
+    <select class="form-control" id="Seccion2" name="Seccion2"> </select>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+    <label for="nombre">Escala</label>
+    <input type="text" class="form-control" id="escala" name="escala"  placeholder="Ingrese Año Ingreso">
+    </div>
+    <div class="col-3">
+    <label for="nombre">Año</label>
+    <input type="text" class="form-control" id="añoingreso" name="añoingreso"  placeholder="Ingrese Año Ingreso">
+    </div>
+</div>
 </div>
 <button type="submit" class="btn btn-primary">Grabar</button>
 </form>
