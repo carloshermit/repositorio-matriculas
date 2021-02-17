@@ -2,6 +2,7 @@
 
 @section('contenido')
 <h3>LISTADO DE MATRICULAS</h3>
+<a href="{{route('matricula.create')}}" class="btn btn-primary"><i class="fas fa-plus"></i>Nuevo Registro</a>
 <nav class="navbar float-right">
     <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Buscar por nro" aria-label="Search" id="buscarpor" name="buscarpor" value={{$buscarpor}} >

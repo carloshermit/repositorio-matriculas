@@ -13,6 +13,20 @@ $(document).ready(function(){
     });
   });
 
+$(document).ready(function(){
+    $('#Grado').on('change', function(){
+      var codNivel = $(this).val();
+      if($.trim(codNivel) != ''){
+        $.get('/listarSecciones/'+codNivel, function(data){
+          $('#Seccion2').empty();
+          $('#Seccion2').append("<option value=''>Selecciona una seccion</option>");
+          $.each(data, function(i, item) {
+            $('#Seccion2').append("<option value='" + data[i].codseccion + "'>"+ data[i].descripcion + "</option>");
+          })
+        });
+      }
+    });
+  });
 
 
   $(document).ready(function(){
