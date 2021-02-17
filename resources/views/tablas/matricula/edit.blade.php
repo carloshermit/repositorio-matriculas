@@ -12,41 +12,41 @@
 <div class="row">
     <div class="col-3">
     <label for="nombre">Codigo Alumno</label>
-    <input type="text" class="form-control" id="codalumno" name="codalumno"  value="{{$matricula->codmatricula}}">
+    <input type="text" class="form-control" id="codalumno" name="codalumno"  value="{{$matricula->codmatricula}}" disabled>
     </div>
     <div class="col-3">
     <label for="nombre">Numero Matricula</label>
-    <input type="text" class="form-control" id="nromatricula" name="nromatricula"  value="{{$matricula->nromatricula}}">
+    <input type="text" class="form-control" id="nromatricula" name="nromatricula"  value="{{$matricula->nromatricula}}" disabled>
     </div>
     <div class="col-3">
-    <label for="nombre">Fecha</label>
-    <div class="form-group">                            
-                    <div class="input-group date form_date " data-date-format="dd/mm/yyyy" data-provide="datepicker">
-                        <input type="text"  class="form-control" id="fechamatricula" name="fechamatricula"
-                        value="{{$matricula->fecha}}" style="text-align:center;">
-                        <div class="input-group-btn">                                        
-                            <button class="btn btn-primary date-set" type="button"><i class="fa fa-calendar"></i></button>
-                        </div>
-                    </div>
+        <label for="nombre">Fecha</label>
+        <div class="form-group">                            
+            <div class="input-group date form_date " data-date-format="dd/mm/yyyy" data-provide="datepicker">
+                <input type="text"  class="form-control" id="fechamatricula" name="fechamatricula" disabled
+                    value="{{$matricula->fecha}}" style="text-align:center;">
+                <div class="input-group-btn">                                        
+                    <button class="btn btn-primary date-set" type="button"><i class="fa fa-calendar"></i></button>
                 </div>
+            </div>
+        </div>
     </div>
 </div>
 <div class="row">
     <div class="col-3">
     <label for="nombre">Apellido Paterno</label>
-    <input type="text" class="form-control" id="añoingreso" name="añoingreso"  placeholder="Ingrese Año Ingreso">
+    <input type="text" class="form-control" id="añoingreso" name="añoingreso"  value="{{$matricula->apellidopaterno}}" disabled>
     </div>
     <div class="col-3">
     <label for="nombre">Apellido Materno</label>
-    <input type="text" class="form-control" id="añoingreso" name="añoingreso"  placeholder="Ingrese Año Ingreso">
+    <input type="text" class="form-control" id="añoingreso" name="añoingreso"  value="{{$matricula->apellidomaterno}}" disabled>
     </div>
     <div class="col-3">
     <label for="nombre">Primer nombre</label>
-    <input type="text" class="form-control" id="añoingreso" name="añoingreso"  placeholder="Ingrese Año Ingreso">
+    <input type="text" class="form-control" id="añoingreso" name="añoingreso"  value="{{$matricula->primernombre}}" disabled>
     </div>
     <div class="col-3">
     <label for="nombre">Otros nombres</label>
-    <input type="text" class="form-control" id="añoingreso" name="añoingreso"  placeholder="Ingrese Año Ingreso">
+    <input type="text" class="form-control" id="añoingreso" name="añoingreso"  value="{{$matricula->otrosnombres}}" disabled>
     </div>
 </div>
 <div class="row">
@@ -70,11 +70,11 @@
 <div class="row">
     <div class="col-3">
     <label for="nombre">Escala</label>
-    <input type="text" class="form-control" id="escala" name="escala"  placeholder="Ingrese Año Ingreso">
+    <input type="text" class="form-control" id="escala" name="escala"  value="{{$matricula->escala}}" >
     </div>
     <div class="col-3">
     <label for="nombre">Año</label>
-    <input type="text" class="form-control" id="añoingreso" name="añoingreso"  placeholder="Ingrese Año Ingreso">
+    <input type="text" class="form-control" id="añoingreso" name="añoingreso"  value="{{$matricula->añoingreso}}">
     </div>
 </div>
 </div>
