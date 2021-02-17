@@ -47,14 +47,15 @@ class MatriculaController extends Controller
     }
     public function edit($id)
     {
+        $nivel=DB::table('nivel')->get();
         $matricula=DB::table('matricula as m')->join('alumno as a','a.codalumno','=','m.codalumno')
         ->join('seccion as s','m.codseccion','=','s.codseccion')
         ->join('grado as g','g.codgrado','=','s.codgrado')
         ->join('nivel as n','n.codnivel','=','g.codnivel')
         ->where('m.codmatricula','=',$id)
-        ->select('m.codmatricula','m.nromatricula','a.apellidopaterno','a.apellidomaterno','a.primernombre','a.otrosnombres','s.descripcion as seccion','g.descripcion as grado','n.descripcion as nivel')->get();
+        ->select('m.codmatricula','m.nromatricula','m.fecha','a.apellidopaterno','a.apellidomaterno','a.primernombre','a.otrosnombres','s.descripcion as seccion','g.descripcion as grado','n.descripcion as nivel')->first();
 
-        return view('tablas/matricula.edit',compact('matricula'));
+        return view('tablas/matricula.edit',compact('matricula','nivel'));
     }
     
 }
