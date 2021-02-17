@@ -21,7 +21,8 @@ class PersonalController extends Controller
 
     public function create()
     {
-        return view('tablas/personal.create');
+        $nivel=DB::table('nivel')->get();
+        return view('tablas/personal.create',compact('nivel'));
     }
 
     public function store(Request $request)
@@ -55,6 +56,10 @@ class PersonalController extends Controller
         $personal->telefono=$request->telefono;
         $personal->nroseguro=$request->nroseguro;
         $personal->estadocivil=$request->Estadocivil;
+        $personal->coddepartamentoa=$request->departamento;
+        $arr = explode('/', $request->añoingreso);
+        $nFecha = $arr[2].'-'.$arr[1].'-'.$arr[0];         
+        $personal->fechaingreso=$nFecha;
         $personal->estado='1';
         $personal->save();
         return redirect()->route('personal.index')->with('datos','Registro Nuevo Guardado!!');
@@ -62,17 +67,18 @@ class PersonalController extends Controller
     }
     public function edit($id)
     {
+        $nivel=DB::table('nivel')->get();
         $personal=Personal::findOrFail($id);
-        return view('tablas/personal.edit',compact('personal'));
+        return view('tablas/personal.edit',compact('personal','nivel'));
     }
     public function update(Request $request, $id)
     {
         $data=request()->validate([
             'nombres'=>'required|max:40',
             'direccion'=>'required|max:40',
-            'dni'=>'required|max:8|numeric',
-            'telefono'=>'required|max:10|numeric',
-            'nroseguro'=>'required|max:10|numeric',
+            'dni'=>'required|digits:8',
+            'telefono'=>'required|max:10',
+            'nroseguro'=>'required|max:10',
         ],
         [
             'nombres.required'=>'Ingrese nombres de personal',
@@ -80,14 +86,14 @@ class PersonalController extends Controller
             'direccion.required'=>'Ingrese direccion de personal',
             'direccion.max'=>'Maximo 60 caracteres para direccion',
             'dni.required'=>'Ingrese dni de personal',
-            'dni.max'=>'Maximo 8 caracteres o dni',
+            'dni.digits'=>'DNI debe tener 8 digitos',
             //'dni.numeric'=>'Ingrese solo digitos',
             'telefono.required'=>'Ingrese telefono del personal',
             'telefono'=>'Maximo 10 caracteres para telefono',
-            'telefono.numeric'=>'Ingrese solo digitos',
+            //'telefono.numeric'=>'Ingrese solo digitos',
             'nroseguro.required'=>'Ingrese nro de seguro del personal',
             'nroseguro'=>'Maximo 10 caracteres para nro de seguro',
-            'nroseguro.numeric'=>'Ingrese solo digitos',
+            //'nroseguro.numeric'=>'Ingrese solo digitos',
         ]);
         $personal=Personal::findOrFail($id);
         $personal->apellidosnombres=$request->nombres;
@@ -96,6 +102,10 @@ class PersonalController extends Controller
         $personal->telefono=$request->telefono;
         $personal->nroseguro=$request->nroseguro;
         $personal->estadocivil=$request->estadocivil;
+        $personal->coddepartamentoa=$request->departamento;
+        $arr = explode('/', $request->añoingreso);
+        $nFecha = $arr[2].'-'.$arr[1].'-'.$arr[0];            
+        $personal->fechaingreso=$nFecha;
         $personal->save(); 
         return redirect()->route('personal.index')->with('datos','Registro Actualizado');
     }

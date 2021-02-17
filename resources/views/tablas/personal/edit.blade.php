@@ -52,13 +52,35 @@
   </div>
   <div class="form-group">
     <label for="estadocivil">Estado civil</label>
-     <select class="custom-select" id="Estadocivil">
-            <option selected>Estado civil</option>
-            <option value="soltero">Soltero</option>
-            <option value="casado">Casado</option>
+     <select class="form-control" id="estadocivil" name="estadocivil">
+            <option {{"soltero" == $personal->estadocivil  ? 'selected' : ''}} value="soltero">Soltero</option>
+            <option  {{"casado" == $personal->estadocivil  ? 'selected' : ''}} value="casado">Casado</option>
         </select>
+  </div>
+  <div class="form-group">
+    <label for="departamento">Departamento</label>
+     <select class="form-control" id="departamento" name="departamento">
+          @foreach($nivel as $itemnivel)
+            <option {{$itemnivel->codnivel == $personal->coddepartamentoa  ? 'selected' : ''}} value="{{$itemnivel->codnivel}}" >{{$itemnivel->descripcion}}</option>
+          @endforeach
+        </select>
+  </div>
+    <div class="form-group">
+    <label for="añoingreso">Año ingreso</label>
+     <div class="input-group date form_date " data-date-format="dd/mm/yyyy" data-provide="datepicker">
+      <input type="text"  class="form-control" id="añoingreso" name="añoingreso"
+        value="{{$personal->fechaingreso}} " style="text-align:center;">
+          <div class="input-group-btn">                                        
+            <button class="btn btn-primary date-set" type="button"><i class="fa fa-calendar"></i></button>
+          </div>
+      </div>
   </div>
   <button type="submit" class="btn btn-primary">Grabar</button>
   <a href="" class="btn btn-danger"><i class="fas fa-ban"></i>Cancelar</a>
 </form>
+@endsection
+@section('script')
+    <script src="/select2/bootstrap-select.min.js"></script>     
+    <script src="/calendario/js/bootstrap-datepicker.min.js"></script>
+    <script src="/calendario/locales/bootstrap-datepicker.es.min.js"></script> 
 @endsection
