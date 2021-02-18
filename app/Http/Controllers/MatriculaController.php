@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Matricula;
 use App\Seccion;
 use App\Alumno;
+use App\Familiar;
 use App\Grado;
 use App\Nivel;
 use DB;
@@ -70,6 +71,21 @@ class MatriculaController extends Controller
         ->join('matricula as m','m.codalumno','=','a.codalumno')
         ->where('m.codmatricula','=',$id)
         ->select('m.codmatricula','m.codalumno','f.apellidopaterno','f.apellidomaterno','f.nombreprimero','f.nombreotros','f.celular')->get();
-        return view('tablas/matricula.add',compact('matricula'));
+        return view('tablas/matricula.createadd',compact('matricula'));
+    }
+    public function storeadd(Request $request)
+    {   
+        $data=request()->validate([
+            'nombre'=>'required|max:40',
+        ],
+        [
+            'nombre.required'=>'Ingrese nombres de seccion',
+            'nombre.max'=>'Maximo 60 caracteres para nombres',
+        ]);
+        $seccion=new Seccion();
+        $seccion->codgrado=$request->Grado;
+        $seccion->descripcion=$request->nombre;
+        $seccion->save();
+        return redirect()->route('seccion.index')->with('datos','Registro Nuevo Guardado!!');
     }
 }
