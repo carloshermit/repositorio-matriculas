@@ -24,10 +24,6 @@ Route::resource('profesor','ProfesorController');
 Route::resource('curso','CursoController');
 Route::resource('seccion','SeccionController');
 Route::resource('personal','PersonalController');
-Route::get('cancelar',function(){
-    return redirect()->route('personal.index')->with('datos','Accion Cancelada ..!');
-})->name('cancelar');
-
 Route::resource('provincia','ProvinciaController');
 Route::resource('alumno','AlumnoController');
 Route::resource('matricula','MatriculaController');
@@ -42,5 +38,26 @@ Route::get('buscarAlumno/{codAlumno}', 'MatriculaController@buscarAlumno');
 Route::get('seccion/{codseccion}/confirmar','SeccionController@confirmar')->name('seccion.confirmar');
 Route::get('curso/{codcurso}/confirmar','CursoController@confirmar')->name('curso.confirmar');
 Route::get('personal/{codpersonal}/confirmar','PersonalController@confirmar')->name('personal.confirmar');
+
+Route::get('matricula/{codmatricula}/confirmar','MatriculaController@confirmar')->name('matricula.confirmar');
+
+Route::get('cancelar1',function(){
+    return redirect()->route('personal.index')->with('datos','Accion Cancelada ..!');
+})->name('cancelar1');
+Route::get('cancelar2',function(){
+    return redirect()->route('seccion.index')->with('datos','Accion Cancelada ..!');
+})->name('cancelar2');
+Route::get('cancelar3',function(){
+    return redirect()->route('curso.index')->with('datos','Accion Cancelada ..!');
+})->name('cancelar3');
+Route::get('cancelar4',function(){
+    return redirect()->route('alumno.index')->with('datos','Accion Cancelada ..!');
+})->name('cancelar4');
+Route::get('cancelar5',function(){
+    return redirect()->route('matricula.index')->with('datos','Accion Cancelada ..!');
+})->name('cancelar5');
+
 Route::get('matricula/{codmatricula}/add','MatriculaController@add')->name('matricula.add');
 Route::get('matricula/{codalumno}/createadd','MatriculaController@createadd')->name('matricula.createadd');
+
+

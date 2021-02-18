@@ -88,4 +88,32 @@ class MatriculaController extends Controller
         $seccion->save();
         return redirect()->route('seccion.index')->with('datos','Registro Nuevo Guardado!!');
     }
+
+    public function confirmar($id)
+    {
+        $matricula=Matricula::findOrFail($id);
+        return view('tablas/matricula.confirmar',compact('matricula'));
+    }
+    public function destroy($id)
+    {
+        $matricula=Matricula::findOrFail($id);
+        DB::table('matricula')->where('codmatricula', '=', $id)->delete();
+        $matricula->save(); 
+        return redirect()->route('matricula.index')->with('datos','Registro Eliminado');
+    }
+    public function update(Request $request, $id)
+    {
+        $matricula=Matricula::findOrFail($id);
+        $matricula->codseccion=$request->Seccion2;
+        $matricula->añoingreso=$request->añoingreso;
+        $matricula->escala=$request->escala;
+        $matricula->save(); 
+        return redirect()->route('matricula.index')->with('datos','Registro Actualizado');
+    }
+
+    public function buscarAlumno($cod)
+    {   
+        return DB::table('alumno')
+        ->where('codeducando','=',$cod)->select('apellidopaterno','apellidomaterno','primernombre','otrosnombres')->get(); 
+    }
 }
