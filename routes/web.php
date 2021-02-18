@@ -59,5 +59,6 @@ Route::get('cancelar5',function(){
 
 Route::get('matricula/{codmatricula}/add','MatriculaController@add')->name('matricula.add');
 Route::get('matricula/{codalumno}/createadd','MatriculaController@createadd')->name('matricula.createadd');
+Route::get('matricula/{codalumno}/storeadd','MatriculaController@storeadd')->name('matricula.storeadd');
 
 

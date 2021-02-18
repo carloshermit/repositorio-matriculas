@@ -67,26 +67,26 @@ class MatriculaController extends Controller
     }
     public function createadd($id)
     {
-        $matricula= DB::table('familiar as f')->join('alumno as a','a.codalumno','=','f.codalumno')
-        ->join('matricula as m','m.codalumno','=','a.codalumno')
-        ->where('m.codmatricula','=',$id)
-        ->select('m.codmatricula','m.codalumno','f.apellidopaterno','f.apellidomaterno','f.nombreprimero','f.nombreotros','f.celular')->get();
+        $matricula= DB::table('alumno as a')
+        ->where('a.codalumno','=',$id)
+        ->select('a.codalumno')->get();
         return view('tablas/matricula.createadd',compact('matricula'));
     }
     public function storeadd(Request $request)
     {   
-        $data=request()->validate([
-            'nombre'=>'required|max:40',
-        ],
-        [
-            'nombre.required'=>'Ingrese nombres de seccion',
-            'nombre.max'=>'Maximo 60 caracteres para nombres',
-        ]);
-        $seccion=new Seccion();
-        $seccion->codgrado=$request->Grado;
-        $seccion->descripcion=$request->nombre;
-        $seccion->save();
-        return redirect()->route('seccion.index')->with('datos','Registro Nuevo Guardado!!');
+        $familiar=new familiar();
+        $familiar->apellidopaterno=$request->appaterno;
+        $familiar->apellidomaterno=$request->apmaterno;
+        $familiar->nombreprimero=$request->primernombre;
+        $familiar->nombreotros=$request->otronombres;
+        $familiar->celular=$request->Celular;
+        $familiar->codalumno=$request->codalumno;
+        $familiar->dni=$request->DNI;
+        $familiar->estado=1;
+        $familiar->save();
+        $matricula= DB::table('matricula')
+        ->where('codalumno','=',$request->codalumno)->first();
+        return redirect()->route('matricula.add',$matricula->codmatricula)->with('datos','Registro Nuevo Guardado!!');
     }
 
     public function confirmar($id)

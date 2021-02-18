@@ -2,7 +2,9 @@
 
 @section('contenido')
 <h1>Crear Registro</h1>
-<form method="POST" action="{{ route('matricula.storeadd')}}">
+@foreach($matricula as $itemmatricula)
+@endforeach
+<form method="GET" action="{{ route('matricula.storeadd',$itemmatricula->codalumno)}}">
     @csrf
     <div class="row">
             <div class="col-3">
@@ -21,10 +23,24 @@
                 <label for="otronombres">Otros Nombres</label>
                 <input type="text" class="form-control" id="otronombres" name="otronombres"  placeholder="Ingrese Otro Nombre">
             </div>
-        </div>
-  </div>
-  <button type="submit" class="btn btn-primary">Grabar</button>
-  <a href="" class="btn btn-danger"><i class="fas fa-ban"></i>Cancelar</a>
+    </div>
+    <div class="row">
+            <div class="col-3">
+                <label for="appaterno">DNI</label>
+                <input type="text" class="form-control" id="DNI" name="DNI"  placeholder="Ingrese Apellido Paterno">
+            </div>
+            <div class="col-3">
+                <label for="appaterno">Celular</label>
+                <input type="text" class="form-control" id="Celular" name="Celular"  placeholder="Ingrese Apellido Paterno">
+            </div>
+            <div class="col-3">
+                <input type="text" class="form-control" id="codalumno" name="codalumno"  value="{{$itemmatricula->codalumno}}">
+            </div>
+    </div>
+    <div class="row">
+        <button type="submit" class="btn btn-primary">Grabar</button>
+        <a href="" class="btn btn-danger"><i class="fas fa-ban"></i>Cancelar</a>
+    </div>
 </form>
 @endsection
 @section('script')
