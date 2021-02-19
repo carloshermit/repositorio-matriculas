@@ -67,5 +67,10 @@ Route::get('matricula/{codmatricula}/destroyadd','MatriculaController@destroyadd
 
 Route::get('personal/{codpersonal}/add','PersonalController@add')->name('personal.add');
 Route::get('personal/{codpersonal}/createadd','PersonalController@createadd')->name('personal.createadd');
+Route::get('personal/{codpersonal}/storeadd','PersonalController@storeadd')->name('personal.storeadd');
+Route::get('personal/{codpersonal}/editadd','PersonalController@editadd')->name('personal.editadd');
+Route::get('personal/{codpersonal}/updateadd','PersonalController@updateadd')->name('personal.updateadd');
+Route::get('personal/{codpersonal}/confirmaradd','PersonalController@confirmaradd')->name('personal.confirmaradd');
+Route::get('personal/{codpersonal}/destroyadd','PersonalController@destroyadd')->name('personal.destroyadd');
 
 

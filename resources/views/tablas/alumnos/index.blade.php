@@ -21,7 +21,7 @@
                 <tr>
                 <th scope="col">Codigo</th>
                 <th scope="col">Nombre</th>
-                <th scope="col">Opciones</th>
+                <th scope="col">DNI</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,10 +29,7 @@
                 <tr>
                 <th>{{$itemalumno->codeducando}}</th>
                 <th>{{$itemalumno->apellidopaterno}} {{$itemalumno->apellidomaterno}} {{$itemalumno->primernombre}}</th>
-                <td>
-                    <a href="" class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Editar</a>
-                    <a href="   " class="btn btn-danger btn-sm"><i class="fas fa-edit"></i>Eliminar</a>
-                </td>
+                <th>{{$itemalumno->dni}}</th>
                 </tr>   
                 @endforeach
             </tbody>

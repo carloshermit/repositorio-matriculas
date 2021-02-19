@@ -16,10 +16,8 @@ class AlumnoController extends Controller
         ->orderBy('codalumno', 'asc')
         ->select('codalumno','codeducando','codmodular','dni','apellidopaterno',
         'apellidomaterno','primernombre',
-        'otrosnombres','sexo','fechanacimiento','coddistrito',
-        'fechaingreso','escala',
-        'codlengua','estadocivil','codreligion','fechabautizo',
-        'parroquiabautizo','colegioprocedencia')->paginate($this::PAGINATION);
+        'otrosnombres','sexo','fechanacimiento','coddistrito'
+        )->paginate($this::PAGINATION);
         return view('tablas/alumnos/index',compact('alumno','buscarpor'));
     }
     public function create()
