@@ -61,4 +61,7 @@ Route::get('matricula/{codmatricula}/add','MatriculaController@add')->name('matr
 Route::get('matricula/{codalumno}/createadd','MatriculaController@createadd')->name('matricula.createadd');
 Route::get('matricula/{codalumno}/storeadd','MatriculaController@storeadd')->name('matricula.storeadd');
 
+Route::get('personal/{codpersonal}/add','PersonalController@add')->name('personal.add');
+Route::get('personal/{codpersonal}/createadd','PersonalController@createadd')->name('personal.createadd');
+
 

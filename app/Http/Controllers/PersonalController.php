@@ -121,4 +121,26 @@ class PersonalController extends Controller
         $personal->save(); 
         return redirect()->route('personal.index')->with('datos','Registro Eliminado');
     }
+    public function add($id)
+    {
+        $personal=DB::table('personal')
+        ->where('codpersonal','=',$id)
+        ->select('codpersonal')->first();
+        $catedra= DB::table('personal as p')->join('catedra as c','p.codpersonal','=','c.codpersonal')
+        ->join('seccion as s','s.codseccion','=','c.codseccion')
+        ->join('grado as g','s.codgrado','=','g.codgrado')
+        ->join('nivel as n','n.codnivel','=','g.codnivel')
+        ->join('curso_grado as cg','cg.codcursogrado','=','c.codcursogrado')
+        ->join('curso as cu','cu.codcurso','=','cg.codcurso')
+        ->where('p.codpersonal','=',$id)
+        ->select('cu.descripcion as curso','g.descripcion as grado','s.descripcion as seccion','n.descripcion as nivel')->get();
+        return view('tablas/personal.add',compact('personal','catedra'));
+    }
+    public function createadd($id)
+    {
+        $personal=DB::table('personal')
+        ->where('codpersonal','=',$id)
+        ->select('codpersonal')->first();
+        return view('tablas/personal.createadd',compact('personal'));
+    }
 }

@@ -23,6 +23,7 @@
                 <th scope="col">Codigo</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Opciones</th>
+                <th scope="col">Catedra</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,6 +34,9 @@
                 <td>
                     <a href="{{route('personal.edit',$itempersonal->codpersonal)}}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Editar</a>
                     <a href="{{route('personal.confirmar',$itempersonal->codpersonal)}}" class="btn btn-danger btn-sm"><i class="fas fa-edit"></i>Eliminar</a>
+                </td>
+                <td>
+                    <a href="{{route('personal.add',$itempersonal->codpersonal)}}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Catedra</a>
                 </td>
                 </tr>   
                 @endforeach
