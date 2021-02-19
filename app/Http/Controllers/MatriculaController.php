@@ -78,11 +78,14 @@ class MatriculaController extends Controller
     }
     public function add($id)
     {
+        $alumno=DB::table('matricula as m')->join('alumno as a','a.codalumno','=','m.codalumno')
+        ->where('m.codmatricula','=',$id)
+        ->select('a.codalumno')->first();
         $matricula= DB::table('familiar as f')->join('alumno as a','a.codalumno','=','f.codalumno')
         ->join('matricula as m','m.codalumno','=','a.codalumno')
         ->where('m.codmatricula','=',$id)
         ->select('m.codmatricula','m.codalumno','f.apellidopaterno','f.apellidomaterno','f.nombreprimero','f.nombreotros','f.celular')->get();
-        return view('tablas/matricula.add',compact('matricula'));
+        return view('tablas/matricula.add',compact('matricula','alumno'));
     }
 
     public function createadd($id)
