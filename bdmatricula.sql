@@ -20,7 +20,6 @@ create table alumno(
 	colegioprocedencia varchar(40)
 )
 
-
 CREATE TABLE DETALLE_DOMICILIO
 ( 
 	CodAlumno            int  NOT NULL, 
@@ -55,7 +54,7 @@ create table provincia(
 )
 
 create TABLE distrito(
-	coddistrito SERIAL PRIMARY KEY,
+	coddistrito SERIAL PRIMARY KEY not null,
 	codprovincia int,
 	descripcion VARCHAR(40)
 )
@@ -69,6 +68,8 @@ CREATE TABLE FAMILIAR
 	nombrePrimero        varchar(40)  NULL ,
 	nombreOtros          varchar(40)  NULL ,
 	celular              varchar(09)  NULL ,
+	relacion              varchar(40)  NULL ,
+	DNI            varchar(08)  NULL ,
 	CodAlumno            int  NOT NULL ,
 	estado				 int
 )
@@ -142,18 +143,21 @@ CREATE TABLE GRADO_COLEGIO
 	codGrado             varchar(08)  NULL 
 )
 
-CREATE TABLE SECCION
+CREATE TABLE seccion
 ( 
 	codseccion           Serial  Primary Key ,
-	codgrado     		 int,
+	codgrado      int,
 	descripcion          varchar(40)  NULL 
 )
 
-CREATE TABLE ALUMNO_SECCION
-( 
-	codAlumnoSeccion     Serial  Primary Key ,
-	codSeccion           int  NOT NULL ,
-	codEducando          int  NOT NULL 
+create table matricula(
+	codmatricula serial primary key not null,
+	codalumno int not null,
+	codseccion int not null,
+	fecha date,
+	escala char(1),
+	añoingreso char(4),
+	nromatricula varchar(5)
 )
 
 
@@ -232,7 +236,12 @@ insert into grado(codNivel,descripcion)
 values(3,'Cuarto');
 insert into grado(codNivel,descripcion)
 values(3,'Quinto');
-
+insert into seccion("codgrado","descripcion")
+values ('4','A');
+insert into seccion("codgrado","descripcion")
+values ('5','A');
+insert into seccion("codgrado","descripcion")
+values ('6','A');
 insert into pais("descripcion")
 	values('Peru')
 insert into departamento("codpais","descripcion")
