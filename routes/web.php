@@ -55,13 +55,6 @@ Route::get('cancelar4',function(){
 Route::get('cancelar5',function(){
     return redirect()->route('matricula.index')->with('datos','Accion Cancelada ..!');
 })->name('cancelar5');
-Route::get('cancelar6',function(){
-    return redirect()->route('matricula.index')->with('datos','Accion Cancelada ..!');
-})->name('cancelar6');
-Route::get('cancelar7',function(){
-    return redirect()->route('personal.index')->with('datos','Accion Cancelada ..!');
-})->name('cancelar7');
-
 Route::get('regresar1',function(){
     return redirect()->route('matricula.index');
 })->name('regresar1');

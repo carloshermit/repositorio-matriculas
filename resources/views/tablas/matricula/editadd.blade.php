@@ -46,7 +46,7 @@
     </div>
     <div class="row">
         <button type="submit" class="btn btn-primary">Grabar</button>
-        <a href="{{route('cancelar6')}}" class="btn btn-danger"><i class="fas fa-ban"></i>Cancelar</a>
+        <a href="{{route('cancelar5')}}" class="btn btn-danger"><i class="fas fa-ban"></i>Cancelar</a>
     </div>
 </form>
 @endsection
