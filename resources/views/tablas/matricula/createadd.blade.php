@@ -34,7 +34,7 @@
                 <input type="text" class="form-control" id="Celular" name="Celular"  placeholder="Ingrese Apellido Paterno">
             </div>
             <div class="col-3">
-                <input type="text" class="form-control" id="codalumno" name="codalumno"  value="{{$itemmatricula->codalumno}}">
+                <input style="visibility:hidden" type="text" class="form-control" id="codalumno" name="codalumno"  value="{{$itemmatricula->codalumno}}">
             </div>
     </div>
     <div class="row">
