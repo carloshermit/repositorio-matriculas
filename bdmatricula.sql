@@ -229,8 +229,32 @@ insert into pais("descripcion")
 	values('Peru');
 insert into departamento("codpais","descripcion")
 	values(1,'La Libertad');
+
+	insert into departamento("codpais","descripcion")
+	values(1,'Lima');
+	insert into departamento("codpais","descripcion")
+	values(1,'San Martín');
+
 insert into provincia("coddepartamento","descripcion")
-	values(1,'Trujillo');
+	values(2,'Lima');
+	insert into distrito("codprovincia","descripcion")
+	values(2,'La Victoria');
+	insert into distrito("codprovincia","descripcion")
+	values(2,'Miraflores');
+
+insert into provincia("coddepartamento","descripcion")
+	values(3,'San Martín');
+	insert into distrito("codprovincia","descripcion")
+	values(3,'San Antonio');
+	insert into distrito("codprovincia","descripcion")
+	values(3,'Tarapoto');
+
+insert into provincia("coddepartamento","descripcion")
+	values(3,'Moyobamba');
+	insert into distrito("codprovincia","descripcion")
+	values(4,'Calzada');
+	insert into distrito("codprovincia","descripcion")
+	values(4,'Habana');
 
 INSERT INTO LENGUA_MATERNA("descripcion")
 VALUES('CASTELLANO');
