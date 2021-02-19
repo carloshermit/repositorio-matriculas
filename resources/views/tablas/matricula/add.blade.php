@@ -41,4 +41,5 @@
                 @endforeach
             </tbody>
             </table>
+            <a href="{{route('regresar1')}}" class="btn btn-primary"><i class="fas"></i>Regresar</a>
 @endsection
