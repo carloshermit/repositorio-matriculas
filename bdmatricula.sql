@@ -59,7 +59,6 @@ create TABLE distrito(
 	descripcion VARCHAR(40)
 )
 
-
 CREATE TABLE FAMILIAR
 ( 
 	codFamiliar          Serial  Primary Key ,
