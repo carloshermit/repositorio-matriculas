@@ -5,7 +5,6 @@ use Illuminate\Http\Request;
 use App\Matricula;
 use App\Seccion;
 use App\Alumno;
-use App\Familiar;
 use App\Grado;
 use App\Nivel;
 use DB;
@@ -32,6 +31,25 @@ class MatriculaController extends Controller
     }
     public function store(Request $request)
     {   
+        $data=request()->validate([
+           
+            'codalumno'=>'required|max:14',
+            'nromatricula'=>'required|digits:5',
+            'escala'=>'required|max:1',
+            'añoingreso'=>'required|digits:4',
+
+        ],
+        [
+            'codalumno.required'=>'Ingrese codigo del alumno',
+            'codalumno.max'=>'Maximo 14 caracteres para codigo del alumno',
+            'nromatricula.required'=>'Ingrese Nro de matricula',
+            'nromatricula.digits'=>'Nro de matricula debe tener 5 digitos',
+            'escala.required'=>'Ingrese escala',
+            'escala.max'=>'Maximo 1 caracter para escala',
+            'añoingreso.required'=>'Ingrese año de ingreso',
+            'añoingreso.max'=>'Maximo 4 caracteres para año de ingreso',
+        ]);
+
         $alumno=DB::table('alumno')
         ->select('codalumno')
         ->where('codeducando','=',$request->codalumno)->first();
@@ -59,74 +77,19 @@ class MatriculaController extends Controller
     }
     public function add($id)
     {
-        $alumno=DB::table('matricula as m')->join('alumno as a','a.codalumno','=','m.codalumno')
-        ->where('m.codmatricula','=',$id)
-        ->select('a.codalumno')->first();
         $matricula= DB::table('familiar as f')->join('alumno as a','a.codalumno','=','f.codalumno')
         ->join('matricula as m','m.codalumno','=','a.codalumno')
         ->where('m.codmatricula','=',$id)
-        ->select('m.codmatricula','m.codalumno','f.codfamiliar','f.apellidopaterno','f.apellidomaterno','f.nombreprimero','f.nombreotros','f.celular')->get();
-        return view('tablas/matricula.add',compact('matricula','alumno'));
+        ->select('m.codmatricula','m.codalumno','f.apellidopaterno','f.apellidomaterno','f.nombreprimero','f.nombreotros','f.celular')->get();
+        return view('tablas/matricula.add',compact('matricula'));
     }
     public function createadd($id)
     {
-        $matricula= DB::table('alumno as a')
-        ->where('a.codalumno','=',$id)
-        ->select('a.codalumno')->get();
-        return view('tablas/matricula.createadd',compact('matricula'));
-    }
-    public function storeadd(Request $request)
-    {   
-        $familiar=new familiar();
-        $familiar->apellidopaterno=$request->appaterno;
-        $familiar->apellidomaterno=$request->apmaterno;
-        $familiar->nombreprimero=$request->primernombre;
-        $familiar->nombreotros=$request->otronombres;
-        $familiar->celular=$request->Celular;
-        $familiar->codalumno=$request->codalumno;
-        $familiar->dni=$request->DNI;
-        $familiar->estado=1;
-        $familiar->save();
-        $matricula= DB::table('matricula')
-        ->where('codalumno','=',$request->codalumno)->first();
-        return redirect()->route('matricula.add',$matricula->codmatricula)->with('datos','Registro Nuevo Guardado!!');
-    }
-
-    public function editadd($id)
-    {   
-        $familiar=Familiar::findOrFail($id);
-        return view('tablas/matricula.editadd',compact('familiar'));
-    }
-    public function updateadd(Request $request, $id)
-    {   
-        $familiar=Familiar::findOrFail($id);
-        $familiar->apellidopaterno=$request->appaterno;
-        $familiar->apellidomaterno=$request->apmaterno;
-        $familiar->nombreprimero=$request->primernombre;
-        $familiar->nombreotros=$request->otronombres;
-        $familiar->celular=$request->Celular;
-        $familiar->dni=$request->DNI;
-        $familiar->estado=1;
-        $familiar->save();
-        $matricula= DB::table('matricula')
-        ->where('codalumno','=',$familiar->codalumno)->first();
-        return redirect()->route('matricula.add',$matricula->codmatricula)->with('datos','Registro Actualizado!!');
-    }
-
-    public function confirmaradd($id)
-    {
-        $familiar=Familiar::findOrFail($id);
-        return view('tablas/matricula.confirmaradd',compact('familiar'));
-    }
-
-    public function destroyadd($id)
-    {
-        $familiar=Familiar::findOrFail($id);
-        DB::table('familiar')->where('codfamiliar', '=', $id)->delete();
-        $familiar->save(); 
-        $matricula= DB::table('matricula')
-        ->where('codalumno','=',$familiar->codalumno)->first();
-        return redirect()->route('matricula.add',$matricula->codmatricula)->with('datos','Registro Eliminado');
+        $matricula= DB::table('familiar as f')->join('alumno as a','a.codalumno','=','f.codalumno')
+        ->join('matricula as m','m.codalumno','=','a.codalumno')
+        ->where('m.codmatricula','=',$id)
+        ->select('m.codmatricula','m.codalumno','f.apellidopaterno','f.apellidomaterno','f.nombreprimero','f.nombreotros','f.celular')->get();
+        return view('tablas/matricula.add',compact('matricula'));
     }
 
     public function confirmar($id)
@@ -156,7 +119,4 @@ class MatriculaController extends Controller
         return DB::table('alumno')
         ->where('codeducando','=',$cod)->select('apellidopaterno','apellidomaterno','primernombre','otrosnombres')->get(); 
     }
-
-
-
 }
