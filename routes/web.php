@@ -65,3 +65,7 @@ Route::get('matricula/{codalumno}/updateadd','MatriculaController@updateadd')->n
 Route::get('matricula/{codmatricula}/confirmaradd','MatriculaController@confirmaradd')->name('matricula.confirmaradd');
 Route::get('matricula/{codmatricula}/destroyadd','MatriculaController@destroyadd')->name('matricula.destroyadd');
 
+Route::get('personal/{codpersonal}/add','PersonalController@add')->name('personal.add');
+Route::get('personal/{codpersonal}/createadd','PersonalController@createadd')->name('personal.createadd');
+
+
