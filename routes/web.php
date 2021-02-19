@@ -38,7 +38,6 @@ Route::get('buscarAlumno/{codAlumno}', 'MatriculaController@buscarAlumno');
 Route::get('seccion/{codseccion}/confirmar','SeccionController@confirmar')->name('seccion.confirmar');
 Route::get('curso/{codcurso}/confirmar','CursoController@confirmar')->name('curso.confirmar');
 Route::get('personal/{codpersonal}/confirmar','PersonalController@confirmar')->name('personal.confirmar');
-
 Route::get('matricula/{codmatricula}/confirmar','MatriculaController@confirmar')->name('matricula.confirmar');
 
 Route::get('cancelar1',function(){
@@ -56,6 +55,12 @@ Route::get('cancelar4',function(){
 Route::get('cancelar5',function(){
     return redirect()->route('matricula.index')->with('datos','Accion Cancelada ..!');
 })->name('cancelar5');
+Route::get('cancelar6',function(){
+    return redirect()->route('matricula.index')->with('datos','Accion Cancelada ..!');
+})->name('cancelar6');
+Route::get('cancelar7',function(){
+    return redirect()->route('personal.index')->with('datos','Accion Cancelada ..!');
+})->name('cancelar7');
 
 Route::get('regresar1',function(){
     return redirect()->route('matricula.index');

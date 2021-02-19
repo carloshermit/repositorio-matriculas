@@ -4,7 +4,7 @@
 <h3>LISTADO DE ALUMNOS</h3>
 <nav class="navbar float-right">
     <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Buscar por nombre" aria-label="Search" id="buscarpor" name="buscarpor" value={{$buscarpor}} >
+        <input class="form-control mr-sm-2" type="search" placeholder="Buscar por apellido" aria-label="Search" id="buscarpor" name="buscarpor" value={{$buscarpor}} >
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
     </form>
 </nav>

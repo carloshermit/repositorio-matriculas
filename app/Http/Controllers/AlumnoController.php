@@ -12,7 +12,7 @@ class AlumnoController extends Controller
     {
         $buscarpor=$request->buscarpor;
         $alumno=DB::table('alumno')
-        ->where('apellidopaterno','ilike','%'.$buscarpor.'%')
+        ->where(DB::raw('concat("apellidopaterno", "apellidomaterno", "primernombre")'),'ilike','%'.$buscarpor.'%')
         ->orderBy('codalumno', 'asc')
         ->select('codalumno','codeducando','codmodular','dni','apellidopaterno',
         'apellidomaterno','primernombre',
