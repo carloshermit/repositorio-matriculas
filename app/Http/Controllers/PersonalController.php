@@ -105,9 +105,7 @@ class PersonalController extends Controller
         $personal->nroseguro=$request->nroseguro;
         $personal->estadocivil=$request->estadocivil;
         $personal->coddepartamentoa=$request->departamento;
-        $arr = explode('/', $request->añoingreso);
-        $nFecha = $arr[2].'-'.$arr[1].'-'.$arr[0];            
-        $personal->fechaingreso=$nFecha;
+        $personal->fechaingreso=$request->añoingreso;
         $personal->save(); 
         return redirect()->route('personal.index')->with('datos','Registro Actualizado');
     }

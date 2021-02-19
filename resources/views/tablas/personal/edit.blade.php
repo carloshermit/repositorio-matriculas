@@ -72,9 +72,9 @@
                       @endforeach
                     </select>
               </div>
-                <div class="col-2">
+                <div class="col-4">
                 <label for="añoingreso">Año ingreso</label>
-                <div class="input-group date form_date " data-date-format="dd/mm/yyyy" data-provide="datepicker">
+                <div class="input-group date form_date " data-date-format="yyyy/mm/dd" data-provide="datepicker">
                   <input type="text"  class="form-control" id="añoingreso" name="añoingreso"
                     value="{{$personal->fechaingreso}} " style="text-align:center;">
                       <div class="input-group-btn">                                        
