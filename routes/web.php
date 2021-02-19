@@ -57,6 +57,10 @@ Route::get('cancelar5',function(){
     return redirect()->route('matricula.index')->with('datos','Accion Cancelada ..!');
 })->name('cancelar5');
 
+Route::get('regresar1',function(){
+    return redirect()->route('matricula.index');
+})->name('regresar1');
+
 Route::get('matricula/{codmatricula}/add','MatriculaController@add')->name('matricula.add');
 Route::get('matricula/{codalumno}/createadd','MatriculaController@createadd')->name('matricula.createadd');
 Route::get('matricula/{codalumno}/storeadd','MatriculaController@storeadd')->name('matricula.storeadd');

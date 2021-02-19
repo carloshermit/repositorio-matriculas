@@ -30,6 +30,14 @@
                 <input type="text" class="form-control" id="DNI" name="DNI"  placeholder="Ingrese Apellido Paterno">
             </div>
             <div class="col-3">
+                <label for="appaterno">Relacion</label>
+                <select class="custom-select" name="relacion" id="relacion">
+                    <option value="PADRE">Padre</option>
+                    <option value="MADRE">Madre</option>
+                    <option value="TUTOR">Tutor</option>
+                </select>
+            </div>
+            <div class="col-3">
                 <label for="appaterno">Celular</label>
                 <input type="text" class="form-control" id="Celular" name="Celular"  placeholder="Ingrese Apellido Paterno">
             </div>

@@ -1,5 +1,8 @@
 @extends('layout.plantilla')
-
+@section('estilos')
+<link rel="stylesheet" href="/calendario/css/bootstrap-datepicker.standalone.css">
+<link rel="stylesheet" href="/select2/bootstrap-select.min.css">
+@endsection
 @section('contenido')
 <h1>Crear Registro</h1>
 <form method="POST" action="{{route('personal.store')}}">

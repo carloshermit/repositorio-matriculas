@@ -83,6 +83,7 @@
     </div>
 </div>
 <button type="submit" class="btn btn-primary">Grabar</button>
+<a href="{{route('cancelar5')}}" class="btn btn-danger"><i class="fas fa-ban"></i>Cancelar</a>
 </form>
 @endsection
 @section('script')
