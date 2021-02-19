@@ -32,7 +32,7 @@ class MatriculaController extends Controller
     }
     public function store(Request $request)
     {   
-        $data=request()->validate([
+        /*$data=request()->validate([
            
             'codalumno'=>'required|max:14',
             'nromatricula'=>'required|digits:5',
@@ -49,7 +49,7 @@ class MatriculaController extends Controller
             'escala.max'=>'Maximo 1 caracter para escala',
             'añoingreso.required'=>'Ingrese año de ingreso',
             'añoingreso.max'=>'Maximo 4 caracteres para año de ingreso',
-        ]);
+        ]);*/
 
         $alumno=DB::table('alumno')
         ->select('codalumno')
@@ -84,7 +84,7 @@ class MatriculaController extends Controller
         $matricula= DB::table('familiar as f')->join('alumno as a','a.codalumno','=','f.codalumno')
         ->join('matricula as m','m.codalumno','=','a.codalumno')
         ->where('m.codmatricula','=',$id)
-        ->select('m.codmatricula','m.codalumno','f.apellidopaterno','f.apellidomaterno','f.nombreprimero','f.nombreotros','f.celular')->get();
+        ->select('m.codmatricula','m.codalumno','f.apellidopaterno','f.apellidomaterno','f.nombreprimero','f.nombreotros','f.celular','f.dni','f.relacion')->get();
         return view('tablas/matricula.add',compact('matricula','alumno'));
     }
 
