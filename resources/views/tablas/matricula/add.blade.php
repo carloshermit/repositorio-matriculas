@@ -3,7 +3,7 @@
 @section('contenido')
 <h3>LISTADO DE CURSOS</h3>
 
-
+<th><a href="{{route('matricula.createadd',$alumno->codalumno)}}" class="btn btn-primary"><i class="fas fa-plus"></i>Nuevo Registro</a> <th>
 @if(session('datos'))
 <div class="alert alert-warning alert-dismissile fade show mt-3" role="alert">
     {{session ('datos') }}
@@ -21,9 +21,13 @@
                 <th scope="col">Nombre otros</th>
                 <th scope="col">Celular</th>
                 <th scope="col">Opciones</th>
+
                 </tr>
             </thead>
             <tbody>
+            @foreach($matricula as $itemmatricula)
+                
+                @endforeach
                 @foreach($matricula as $itemmatricula)
                 <tr>
                 <th>{{$itemmatricula->apellidopaterno}}</th>
@@ -39,5 +43,4 @@
                 @endforeach
             </tbody>
             </table>
-            <a href="{{route('matricula.createadd',$itemmatricula->codalumno)}}" class="btn btn-primary"><i class="fas fa-plus"></i>Nuevo Registro</a>            
 @endsection
