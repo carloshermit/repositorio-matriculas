@@ -1,3 +1,5 @@
+create database bdmatricula;
+use database bdmatricula;
 create table alumno(
 	codalumno serial primary key not null,
 	codeducando varchar(14),
@@ -18,7 +20,7 @@ create table alumno(
 	fechabautizo date,
 	parroquiabautizo varchar(40),
 	colegioprocedencia varchar(40)
-)
+);
 
 CREATE TABLE DETALLE_DOMICILIO
 ( 
@@ -36,7 +38,7 @@ CREATE TABLE DETALLE_DOMICILIO
 	nroHabitaciones      varchar(40)  NULL ,
 	nroHabitantes        varchar(40)  NULL ,
 	situacion            varchar(40)  NULL 
-)
+);
 
 create table pais(
 	codpais serial primary key not null,
@@ -46,18 +48,18 @@ create table departamento(
 	coddepartamento serial primary key not null,
 	codpais int,
 	descripcion varchar(40)
-)
+);
 create table provincia(
 	codprovincia serial primary key not null,
 	coddepartamento int,
 	descripcion varchar(40)
-)
+);
 
 create TABLE distrito(
 	coddistrito SERIAL PRIMARY KEY not null,
 	codprovincia int,
 	descripcion VARCHAR(40)
-)
+);
 
 CREATE TABLE FAMILIAR
 ( 
@@ -71,34 +73,22 @@ CREATE TABLE FAMILIAR
 	DNI            varchar(08)  NULL ,
 	CodAlumno            int  NOT NULL ,
 	estado				 int
-)
+);
 
 CREATE TABLE LENGUA_MATERNA(
 	CODLENGUA SERIAL PRIMARY KEY,
 	DESCRIPCION VARCHAR(40)
-)
-INSERT INTO LENGUA_MATERNA("descripcion")
-VALUES('CASTELLANO');
-INSERT INTO LENGUA_MATERNA("descripcion")
-VALUES('QUECHUA');
-INSERT INTO LENGUA_MATERNA("descripcion")
-VALUES('AIMARA');
+);
 
 create table religion(
 	codreligion serial primary key,
 	descripcion varchar(40)
-)
-
-insert into religion("descripcion")
-values('Catolico');
-insert into religion("descripcion")
-values('Cristiano');
-
+);
 
 CREATE TABLE PERSONAL
 ( 
 	codPersonal          Serial Primary Key ,
-	codDepartamentoA     varchar(08) ,
+	codDepartamentoA     int ,
 	ApellidosNombres     varchar(40)  NULL ,
 	telefono             varchar(09)  NULL ,
 	nroSeguro            varchar(11)  NULL ,
@@ -107,47 +97,47 @@ CREATE TABLE PERSONAL
 	estadocivil          varchar(40)  NULL ,
 	fechaIngreso         date  NULL ,
 	estado				 int
-)
+);
 
 CREATE TABLE DEPARTAMENTO_ACADEMICO
 ( 
-	codDepartamentoA     varchar(08)  Primary Key NOT NULL ,
+	codDepartamentoA     serial primary key ,
 	descripcion          varchar(40)  NULL 
-)
+);
 
 CREATE TABLE COLEGIO
 ( 
 	codColegio           Serial Primary Key ,
 	descripcion          char(40)  NULL,
 	codDistrito			 varchar(08) 
-)
+);
 
 CREATE TABLE NIVEL
 ( 
-	codNivel             serial Primary Key NOT NULL ,
+	codNivel             serial primary key ,
 	descripcion          varchar(40)  NULL 
-)
+);
 
 CREATE TABLE GRADO
 	( 
-	codGrado             varchar(08)   Primary Key NOT NULL ,
-	codNivel             varchar(08)  NULL ,
+	codGrado             serial primary key ,
+	codNivel             int  NULL ,
 	descripcion          varchar(40)  NULL 
-)
+);
 
 CREATE TABLE GRADO_COLEGIO
 ( 
-	codGradoColegio      varchar(08)   Primary Key NOT NULL ,
-	codColegio           varchar(08)  NULL ,
-	codGrado             varchar(08)  NULL 
-)
+	codGradoColegio      serial primary key ,
+	codColegio           int  NULL ,
+	codGrado             int  NULL 
+);
 
 CREATE TABLE seccion
 ( 
 	codseccion           Serial  Primary Key ,
 	codgrado      int,
 	descripcion          varchar(40)  NULL 
-)
+);
 
 create table matricula(
 	codmatricula serial primary key not null,
@@ -157,62 +147,56 @@ create table matricula(
 	escala char(1),
 	añoingreso char(4),
 	nromatricula varchar(5)
-)
+);
 
 
 CREATE TABLE CURSO
 ( 
 	codCurso             Serial  Primary Key,
 	descripcion          varchar(40)  NULL 
-)
+);
 
 CREATE TABLE CURSO_GRADO
 ( 
 	codCursoGrado        Serial  Primary Key ,
 	codCurso             int  NOT NULL ,
-	codGradoColegio      varchar(08)  NOT NULL 
-)
+	codGradoColegio      int  NOT NULL 
+);
 
 CREATE TABLE CATEDRA
 ( 
 	codCatedra           Serial  Primary Key ,
 	codSeccion           int  NOT NULL ,
-	codCursoGrado        int  NOT NULL ,
+	codcurso        int  NOT NULL ,
 	CodPersonal          int  NOT NULL 
-)
+);
 
+CREATE TABLE USERS
+( 
+	id           Serial  Primary Key ,
+	name           varchar(255) ,
+	email        varchar(190) ,
+	password          varchar(255) 
+);
 
-INSERT INTO public.alumno(
-	nromatricula, codmodular, fechabautizo, parroquiabautizo, colegioprocedencia, codlengua, codreligion, dni, apellidopaterno, apellidomaterno, primernombre, otrosnombres, sexo, estadocivil, fechanacimiento, fechaingreso, coddistrito, estado)
-	VALUES ('123', '123', '12-10-2006', 'yo q se', 'onrreifni', '1', '1', '12345678', 'valderrama', 'quino', 'steven', 'papi riqui', 'aun no', 'solito', '12-12-1212', '12-12-1212', '1', '1');
-
-INSERT INTO public.religion(
-	codreligion, descripcion)
-	VALUES ('1', 'budista');
-
-SELECT al.dni, al.apellidopaterno, al.apellidomaterno, al.primernombre, al.otrosnombres, al.sexo, re.descripcion
-	FROM public.alumno al inner join public.religion re on al.codReligion=re.codReligion;
-
-INSERT INTO public.personal(
-	coddepartamentoa, apellidosnombres, telefono, nroseguro, direccion, dni, estadocivil, fechaingreso, estado)
-	VALUES ('1', 'Benito Camela', '123456789', '10101010101', 'av ee', '12345678', 'casado', '12-07-1999', '1');
-
-INSERT INTO public.departamento_academico(
-	coddepartamentoa, descripcion)
-	VALUES ('1', 'Personal docente primaria');
-
-SELECT  pe.apellidosnombres, pe.telefono, pe.nroseguro, pe.direccion, pe.dni, da.descripcion
-	FROM public.personal pe inner join public.departamento_academico da on pe.codDepartamentoA=da.codDepartamentoA;
+insert into religion("descripcion")
+values('Catolico');
+insert into religion("descripcion")
+values('Cristiano');
 
 INSERT INTO public.colegio(
 	descripcion, coddistrito)
 	VALUES ('san juan', '1');
+insert into nivel(descripcion) values('INICIAL');
+insert into nivel(descripcion) values('PRIMARIA');
+insert into nivel(descripcion) values('SECUNDARIA');
+values(1,'3 Años');
 insert into grado(codNivel,descripcion)
-values(2,'3 Años');
+values(1,'3 Años');
 insert into grado(codNivel,descripcion)
-values(2,'4 Años');
+values(1,'4 Años');
 insert into grado(codNivel,descripcion)
-values(2,'5 Años');
+values(1,'5 Años');
 insert into grado(codNivel,descripcion)
 values(2,'Primero');
 insert into grado(codNivel,descripcion)
@@ -242,12 +226,18 @@ values ('5','A');
 insert into seccion("codgrado","descripcion")
 values ('6','A');
 insert into pais("descripcion")
-	values('Peru')
+	values('Peru');
 insert into departamento("codpais","descripcion")
-	values(1,'La Libertad')
+	values(1,'La Libertad');
 insert into provincia("coddepartamento","descripcion")
-	values(1,'Trujillo')
+	values(1,'Trujillo');
 
+INSERT INTO LENGUA_MATERNA("descripcion")
+VALUES('CASTELLANO');
+INSERT INTO LENGUA_MATERNA("descripcion")
+VALUES('QUECHUA');
+INSERT INTO LENGUA_MATERNA("descripcion")
+VALUES('AIMARA');
 
 INSERT INTO distrito("codprovincia","descripcion")
 VALUES(1,'Trujillo');
@@ -258,7 +248,6 @@ VALUES(1,'Esperanza');
 INSERT INTO distrito("codprovincia","descripcion")
 VALUES(1,'Victor Larco Herrera');
 
-
-insert into alumno("codeducando","codmodular","dni","apellidopaterno","apellidomaterno","primernombre","otrosnombres","sexo","fechanacimiento","coddistrito","fechaingreso","escala","codlengua","estadocivil","codreligion","fechabautizo","parroquiabautizo","colegioprocedencia")
-values('12345678912345','1234567','76174081','Alcantara','Ninatanta','Luis','Fernando','masculino','1996-10-20',4,'2010','C',1,'Soltero',1,'2008-12-10','Parroquia','VRHT')
+INSERT INTO public.users(name, email, password)
+	VALUES ('admin', 'admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi');
 
