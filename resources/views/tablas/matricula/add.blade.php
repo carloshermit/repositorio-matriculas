@@ -15,10 +15,9 @@
 <table class="table">
             <thead class="thead-dark">
                 <tr>
-                <th scope="col">Apellido paterno</th>
-                <th scope="col">Apellido materno</th>
-                <th scope="col">Nombre primero</th>
-                <th scope="col">Nombre otros</th>
+                <th scope="col">Apellidos y Nombres</th>
+                <th scope="col">DNI</th>
+                <th scope="col">Relacion</th>
                 <th scope="col">Celular</th>
                 <th scope="col">Opciones</th>
 
@@ -30,10 +29,9 @@
                 @endforeach
                 @foreach($matricula as $itemmatricula)
                 <tr>
-                <th>{{$itemmatricula->apellidopaterno}}</th>
-                <th>{{$itemmatricula->apellidomaterno}} </th>
-                <th>{{$itemmatricula->nombreprimero}} </th>
-                <th>{{$itemmatricula->nombreotros}} </th>
+                <th>{{$itemmatricula->apellidopaterno}} {{$itemmatricula->apellidomaterno}} {{$itemmatricula->nombreprimero}}  {{$itemmatricula->nombreotros}} </th>
+                <th>{{$itemmatricula->dni}} </th>
+                <th>{{$itemmatricula->relacion}} </th>
                 <th>{{$itemmatricula->celular}} </th>
                 <td>
                     <a href="{{route('matricula.editadd',$itemmatricula->codfamiliar)}}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Editar</a>
@@ -43,4 +41,5 @@
                 @endforeach
             </tbody>
             </table>
+            <a href="{{route('regresar1')}}" class="btn btn-primary"><i class="fas"></i>Regresar</a>
 @endsection

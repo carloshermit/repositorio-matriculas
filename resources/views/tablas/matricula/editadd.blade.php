@@ -29,6 +29,14 @@
                 <input type="text" class="form-control" id="DNI" name="DNI"  value="{{$familiar->dni}}">
             </div>
             <div class="col-3">
+                <label for="appaterno">Relacion</label>
+                <select class="custom-select" name="relacion" id="relacion" value="{{$familiar->dni}}">
+                <option {{"PADRE" == $familiar->relacion  ? 'selected' : ''}} value="PADRE" >Padre</option>
+                <option {{"MADRE" == $familiar->relacion  ? 'selected' : ''}} value="MADRE" >Madre</option>
+                <option {{"TUTOR" == $familiar->relacion  ? 'selected' : ''}} value="TUTOR" >Tutor</option>
+                </select>
+            </div>
+            <div class="col-3">
                 <label for="appaterno">Celular</label>
                 <input type="text" class="form-control" id="Celular" name="Celular" value="{{$familiar->celular}}">
             </div>
