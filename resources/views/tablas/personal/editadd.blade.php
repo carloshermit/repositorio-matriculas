@@ -1,8 +1,9 @@
 @extends('layout.plantilla')
 
 @section('contenido')
-<h3>Agregar catedra</h3>
-<form method="GET" action="{{ route('personal.storeadd',$personal->codpersonal)}}">
+<h3>Editar registro</h3>
+<form method="GET" action="{{ route('personal.updateadd',$catedra->codcatedra)}}">
+@method('put')
 @csrf
 <div class="row">
     <div class="col-3">
@@ -27,7 +28,7 @@
         </select>
     </div>
     <div class="col-3">
-        <input style="visibility:hidden" type="text" class="form-control" id="codpersonal" name="codpersonal"  value="{{$personal->codpersonal}}">
+        <input style="visibility:hidden" type="text" class="form-control" id="codpersonal" name="codpersonal"  value="{{$catedra->codpersonal}}">
     </div>
 </div>
 <button type="submit" class="btn btn-primary">Grabar</button>

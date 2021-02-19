@@ -242,7 +242,7 @@ VALUES('AIMARA');
 INSERT INTO distrito("codprovincia","descripcion")
 VALUES(1,'Trujillo');
 INSERT INTO distrito("codprovincia","descripcion")
-VALUES(1,'Provenir');
+VALUES(1,'El Porvenir');
 INSERT INTO distrito("codprovincia","descripcion")
 VALUES(1,'Esperanza');
 INSERT INTO distrito("codprovincia","descripcion")

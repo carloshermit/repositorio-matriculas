@@ -18,6 +18,7 @@
                 <th scope="col">Grado</th>
                 <th scope="col">Seccion</th>
                 <th scope="col">Nivel</th>
+                <th scope="col">Opciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,8 +29,8 @@
                 <th>{{$itemcatedra->seccion}} </th>
                 <th>{{$itemcatedra->nivel}} </th>
                 <td>
-                    <a href="" class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Editar</a>
-                    <a href="" class="btn btn-danger btn-sm"><i class="fas fa-edit"></i>Eliminar</a>
+                    <a href="{{route('personal.editadd',$itemcatedra->codcatedra)}}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Editar</a>
+                    <a href="{{route('personal.confirmaradd',$itemcatedra->codcatedra)}}" class="btn btn-danger btn-sm"><i class="fas fa-edit"></i>Eliminar</a>
                 </td>
                 </tr>   
                 @endforeach

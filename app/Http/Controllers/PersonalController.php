@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Personal;
+use App\Catedra;
 class PersonalController extends Controller
 {
     const PAGINATION=10;
@@ -12,9 +13,10 @@ class PersonalController extends Controller
     {
         $buscarpor=$request->buscarpor;
         $personal=DB::table('personal')
+        ->join('nivel as n','n.codnivel','=','coddepartamentoa')
         ->where('apellidosnombres','ilike','%'.$buscarpor.'%')
         ->orderBy('codpersonal', 'asc')
-        ->select('codpersonal','apellidosnombres','telefono'
+        ->select('codpersonal','apellidosnombres','telefono','n.descripcion as nivel'
         ,'nroseguro','direccion','dni','estadocivil','fechaingreso')->paginate($this::PAGINATION);
         return view('tablas/personal/index',compact('personal','buscarpor'));
     }
@@ -124,23 +126,84 @@ class PersonalController extends Controller
     public function add($id)
     {
         $personal=DB::table('personal')
-        ->where('codpersonal','=',$id)
-        ->select('codpersonal')->first();
-        $catedra= DB::table('personal as p')->join('catedra as c','p.codpersonal','=','c.codpersonal')
-        ->join('seccion as s','s.codseccion','=','c.codseccion')
+        ->where('codpersonal','=',$id)->first();
+        $catedra= DB::table('catedra as ca')
+        ->join('seccion as s','s.codseccion','=','ca.codseccion')
         ->join('grado as g','s.codgrado','=','g.codgrado')
         ->join('nivel as n','n.codnivel','=','g.codnivel')
-        ->join('curso_grado as cg','cg.codcursogrado','=','c.codcursogrado')
-        ->join('curso as cu','cu.codcurso','=','cg.codcurso')
-        ->where('p.codpersonal','=',$id)
-        ->select('cu.descripcion as curso','g.descripcion as grado','s.descripcion as seccion','n.descripcion as nivel')->get();
-        return view('tablas/personal.add',compact('personal','catedra'));
+        ->join('curso as cu','cu.codcurso','=','ca.codcurso')
+        ->where('ca.codpersonal','=',$id)
+        ->select('ca.codcatedra','cu.codcurso','cu.descripcion as curso',
+        'g.codgrado','g.descripcion as grado',
+        's.codseccion','s.descripcion as seccion',
+        'n.codnivel','n.descripcion as nivel')->get();
+        return view('tablas/personal.add',compact('catedra','personal'));
     }
     public function createadd($id)
     {
-        $personal=DB::table('personal')
-        ->where('codpersonal','=',$id)
-        ->select('codpersonal')->first();
-        return view('tablas/personal.createadd',compact('personal'));
+        $curso=DB::table('curso')->get();
+        $grado=DB::table('grado as g') 
+        ->join('personal as p','p.coddepartamentoa','=','g.codnivel')
+        ->where('p.codpersonal','=',$id)
+        ->select('g.codgrado','g.descripcion')
+        ->get();
+        $personal= DB::table('personal')
+        ->where('codpersonal','=',$id)->first();
+        return view('tablas/personal.createadd',compact('curso','grado','personal'));
+    }
+
+    public function storeadd(Request $request)
+    {   
+        $catedra=new Catedra();
+        $catedra->codseccion=$request->Seccion2;
+        $catedra->codcurso=$request->Curso;
+        $catedra->codpersonal=$request->codpersonal;
+        $catedra->save();
+        $personal= DB::table('personal')
+        ->where('codpersonal','=',$request->codpersonal)->first();
+        return redirect()->route('personal.add',$personal->codpersonal)->with('datos','Registro Nuevo Guardado!!');
+    }
+    public function editadd($id)
+    {   
+        $catedra=Catedra::findOrFail($id);
+        $curso=DB::table('curso')->get();
+        $personal=DB::table('personal as p')
+        ->join('catedra as c','c.codpersonal','=','p.codpersonal')
+        ->where('c.codcatedra','=',$id)
+        ->select('p.codpersonal')
+        ->first();
+        $grado=DB::table('grado as g')
+        ->join('nivel as n','n.codnivel','=','g.codnivel')
+        ->join('personal as p','p.coddepartamentoa','=','n.codnivel')
+        ->where('p.codpersonal','=',$personal->codpersonal)
+        ->select('g.codgrado','g.descripcion')
+        ->get();
+        return view('tablas/personal.editadd',compact('catedra','curso','grado','personal'));
+    }
+    public function updateadd(Request $request, $id)
+    {   
+        $catedra=Catedra::findOrFail($id);
+        $catedra->codseccion=$request->Seccion2;
+        $catedra->codcurso=$request->Curso;
+        $catedra->codpersonal=$request->codpersonal;
+        $catedra->save();
+        $personal= DB::table('personal')
+        ->where('codpersonal','=',$catedra->codpersonal)->first();
+        return redirect()->route('personal.add',$personal->codpersonal)->with('datos','Registro Actualizado!!');
+    }
+    public function confirmaradd($id)
+    {
+        $catedra=Catedra::findOrFail($id);
+        return view('tablas/personal.confirmaradd',compact('catedra'));
+    }
+
+    public function destroyadd($id)
+    {
+        $catedra=Catedra::findOrFail($id);
+        DB::table('catedra')->where('codcatedra', '=', $id)->delete();
+        $catedra->save(); 
+        $personal= DB::table('personal')
+        ->where('codpersonal','=',$catedra->codpersonal)->first();
+        return redirect()->route('personal.add',$personal->codpersonal)->with('datos','Registro Eliminado');
     }
 }
