@@ -1,7 +1,7 @@
 @extends('layout.plantilla')
 
 @section('contenido')
-<h3>LISTADO DE CURSOS</h3>
+<h3>LISTADO DE FAMILIARES</h3>
 
 <th><a href="{{route('matricula.createadd',$alumno->codalumno)}}" class="btn btn-primary"><i class="fas fa-plus"></i>Nuevo Registro</a> <th>
 @if(session('datos'))
@@ -36,8 +36,8 @@
                 <th>{{$itemmatricula->nombreotros}} </th>
                 <th>{{$itemmatricula->celular}} </th>
                 <td>
-                    <a href="" class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Editar</a>
-                    <a href="" class="btn btn-danger btn-sm"><i class="fas fa-edit"></i>Eliminar</a>
+                    <a href="{{route('matricula.editadd',$itemmatricula->codfamiliar)}}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Editar</a>
+                    <a href="{{route('matricula.confirmaradd',$itemmatricula->codfamiliar)}}" class="btn btn-danger btn-sm"><i class="fas fa-edit"></i>Eliminar</a>
                 </td>
                 </tr>   
                 @endforeach

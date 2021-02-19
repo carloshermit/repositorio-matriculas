@@ -60,5 +60,8 @@ Route::get('cancelar5',function(){
 Route::get('matricula/{codmatricula}/add','MatriculaController@add')->name('matricula.add');
 Route::get('matricula/{codalumno}/createadd','MatriculaController@createadd')->name('matricula.createadd');
 Route::get('matricula/{codalumno}/storeadd','MatriculaController@storeadd')->name('matricula.storeadd');
-
+Route::get('matricula/{codalumno}/editadd','MatriculaController@editadd')->name('matricula.editadd');
+Route::get('matricula/{codalumno}/updateadd','MatriculaController@updateadd')->name('matricula.updateadd');
+Route::get('matricula/{codmatricula}/confirmaradd','MatriculaController@confirmaradd')->name('matricula.confirmaradd');
+Route::get('matricula/{codmatricula}/destroyadd','MatriculaController@destroyadd')->name('matricula.destroyadd');
 
