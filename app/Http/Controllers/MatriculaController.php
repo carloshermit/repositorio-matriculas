@@ -65,7 +65,7 @@ class MatriculaController extends Controller
         $matricula= DB::table('familiar as f')->join('alumno as a','a.codalumno','=','f.codalumno')
         ->join('matricula as m','m.codalumno','=','a.codalumno')
         ->where('m.codmatricula','=',$id)
-        ->select('m.codmatricula','m.codalumno','f.codfamiliar','f.apellidopaterno','f.apellidomaterno','f.nombreprimero','f.nombreotros','f.celular')->get();
+        ->select('m.codmatricula','m.codalumno','f.codfamiliar','f.apellidopaterno','f.apellidomaterno','f.nombreprimero','f.nombreotros','f.celular','f.dni','f.relacion')->get();
         return view('tablas/matricula.add',compact('matricula','alumno'));
     }
     public function createadd($id)
@@ -85,6 +85,7 @@ class MatriculaController extends Controller
         $familiar->celular=$request->Celular;
         $familiar->codalumno=$request->codalumno;
         $familiar->dni=$request->DNI;
+        $familiar->relacion=$request->relacion;
         $familiar->estado=1;
         $familiar->save();
         $matricula= DB::table('matricula')
@@ -106,6 +107,7 @@ class MatriculaController extends Controller
         $familiar->nombreotros=$request->otronombres;
         $familiar->celular=$request->Celular;
         $familiar->dni=$request->DNI;
+        $familiar->relacion=$request->relacion;
         $familiar->estado=1;
         $familiar->save();
         $matricula= DB::table('matricula')
